@@ -1,0 +1,14 @@
+{
+  "name": "Tamim Talukdar",
+  "headline": "React Front-End Developer",
+  "location": "Madan, Netrokona, Mymensingh",
+  "bio": "I love to write clean code, and I'm passionate to learn something new daily. I enjoy the visual results very much.",
+  "avatar": "https://github.com/protamim.png",
+  "portfolio": "https://portfolio-6c08d.web.app/",
+  "skills": ["Tailwindcss", "ReactJS", "MongoDB", "ExpressJS", "NodeJS"],
+  "social": {
+    "GitHub": "https://github.com/protamim",
+    "LinkedIn": "https://www.linkedin.com/in/protamim",
+    "Twitter": "https://twitter.com/talukdar_32"
+  }
+}
