@@ -1,4 +1,4 @@
-<h1  align="center">Sosial Link's</h1>
+<h1  align="center">Social Link's</h1>
 
 <h1  align="center">Connect and Discover with Skilled Developers</h1>
 
