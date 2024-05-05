@@ -1,3 +1,5 @@
+// import { Link } from "react-router-dom";
+
 const Header = () => {
   return (
     <header className="rn-header haeder-default black-logo-version header--fixed header--sticky">
@@ -5,8 +7,8 @@ const Header = () => {
         <div className="col-lg-2 col-6">
           <div className="header-left">
             <div className="logo">
-              <a href="index.html">
-                <img src="assets/images/logo/logos-circle.png" alt="logo" />
+              <a href="/">
+                <img src="/assets/images/logo.png" alt="logo" />
               </a>
             </div>
           </div>

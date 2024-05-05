@@ -3,10 +3,10 @@ import React from "react";
 const Banner = () => {
   return (
     <div id="home" className="rn-slider-area">
-      <div className="slide slider-style-4 bg_image bg_image--1">
+      <div className="slide slider-style-4 bg_image bg_image--1 ">
         <div className="container">
           <div className="row">
-            <div className="order-2 order-lg-1 col-lg-9 col-xl-7">
+            <div className="order-2 order-lg-1 col-lg-9 col-xl-7 mt--35">
               <div className="content">
                 <div className="inner mb_sm--80">
                   <h1 className="title">
@@ -30,11 +30,7 @@ const Banner = () => {
                     <div className="social-share-inner-left">
                       <span className="title"></span>
                     </div>
-                    <a
-                      class="rn-btn"
-                      target="_blank"
-                      href="https://themeforest.net/checkout/from_item/33188244?license=regular"
-                    >
+                    <a className="rn-btn" href="#">
                       <span>Join With Github</span>
                     </a>
                   </div>

@@ -16,8 +16,8 @@ const ProfileHeader = ({ data }) => {
         </div>
         <div className="rn-content-wrapper">
           <div className="container">
-            <a class="p-3 router-homepage" href="/">
-              <div class=" rounded ">Home Page</div>
+            <a className="p-3 router-homepage" href="/">
+              <div className=" rounded ">Home Page</div>
             </a>
             <div className="row padding-tb m_dec-top align-items-center d-flex">
               <div className="col-lg-6">

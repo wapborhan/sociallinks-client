@@ -1,18 +1,8 @@
-<h1  align="center">Social Link's</h1>
+# React + Vite
 
-<h1  align="center">Connect and Discover with Skilled Developers</h1>
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-<a  id="about"></a>
+Currently, two official plugins are available:
 
-## About
-
-- Sosial Link's - [Website](https://sharesociallinks.vercel.app)
-
-- Share your social links and professional profiles with each other in an extraordinary way.
-
-<a  id="features"></a>
-
-## Features
-
-- Users can search by developer name, title, skill.
-- A strong search system has been created just for this.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
