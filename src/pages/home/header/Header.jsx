@@ -1,4 +1,4 @@
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -7,9 +7,9 @@ const Header = () => {
         <div className="col-lg-2 col-6">
           <div className="header-left">
             <div className="logo">
-              <a href="/">
+              <Link to="/">
                 <img src="/assets/images/logo.png" alt="logo" />
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -21,29 +21,32 @@ const Header = () => {
             >
               <ul className="primary-menu nav nav-pills">
                 <li className="nav-item current">
-                  <a className="nav-link smoth-animation" href="#home">
+                  <Link className="nav-link smoth-animation" to="/">
                     Home
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link smoth-animation" href="#about">
+                  <Link className="nav-link smoth-animation" to="/about">
                     About
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link smoth-animation" href="#skill">
+                  <Link className="nav-link smoth-animation" to="/ranks">
                     Rank
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link smoth-animation" href="#contacts">
+                  <Link
+                    className="nav-link smoth-animation"
+                    to="/liked-profile"
+                  >
                     Liked Profiles
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link smoth-animation" href="#contacts">
+                  <Link className="nav-link smoth-animation" to="/profile">
                     My Profile
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </nav>
