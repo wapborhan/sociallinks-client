@@ -1,6 +1,25 @@
-import React from "react";
+import { useContext } from "react";
+import { AuthContex } from "../../../provider/AuthProvider";
 
 const Banner = () => {
+  const { createUser } = useContext(AuthContex);
+
+  const signInGithub = () => {
+    createUser()
+      .then((result) => {
+        // The signed-in user info.
+        const user = result.user;
+
+        console.log(user);
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+      });
+  };
+
   return (
     <div id="home" className="rn-slider-area">
       <div className="slide slider-style-4 bg_image bg_image--1 ">
@@ -30,7 +49,7 @@ const Banner = () => {
                     <div className="social-share-inner-left">
                       <span className="title"></span>
                     </div>
-                    <a className="rn-btn" href="#">
+                    <a className="rn-btn" onClick={signInGithub}>
                       <span>Join With Github</span>
                     </a>
                   </div>
