@@ -1,11 +1,14 @@
 import { createContext, useEffect, useState } from "react";
 import {
   GithubAuthProvider,
+  getRedirectResult,
   onAuthStateChanged,
   signInWithPopup,
+  signInWithRedirect,
   signOut,
 } from "firebase/auth";
 import { auth } from "./firebase.config.js";
+import { useNavigate, useNavigation } from "react-router-dom";
 
 // Create Contex Authentication
 export const AuthContex = createContext(null);
@@ -31,26 +34,16 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       console.log("current user", currentUser);
-      // get token and store client
-      //   const userInfo = { email: currentUser?.email };
-      //   axiosPublic.post("/auth", userInfo).then((res) => {
-      //     if (res.data.token) {
-      //       localStorage.setItem("access-token", res.data?.token);
-      //       setLoading(false);
-      //     } else {
-      //       // TODO: remove token (if token stored in the client side: Local storage, caching, in memory)
-      //       localStorage.removeItem("access-token");
-      //       setLoading(false);
-      //     }
-      //   });
+
       setLoading(false);
     });
+
     return () => {
       return unsubscribe();
     };
   }, []);
 
-  const authInfo = { createUser, logOut, user, loading };
+  const authInfo = { createUser, logOut, user, setUser, loading };
 
   return <AuthContex.Provider value={authInfo}>{children}</AuthContex.Provider>;
 };
