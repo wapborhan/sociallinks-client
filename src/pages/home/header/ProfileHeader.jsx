@@ -29,8 +29,8 @@ const ProfileHeader = ({ data }) => {
                   <div className="header-left">
                     <div className="header-thumbnail">
                       <img
-                        width={400}
-                        height={400}
+                        // width={400}
+                        // height={400}
                         alt={data?.name}
                         src={data?.avatar_url}
                       />
@@ -48,7 +48,7 @@ const ProfileHeader = ({ data }) => {
                         </span>
                         {data?.location}
                       </div>
-                      <div className="status-info mb-3 px-5">{data?.bio}</div>
+                      {/* <div className="status-info mb-3 px-5">{data?.bio}</div> */}
 
                       {/* <!-- end --> */}
                     </div>

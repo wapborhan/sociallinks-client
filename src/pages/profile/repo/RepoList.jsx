@@ -16,7 +16,7 @@ export default function Repos(user) {
     <>
       <div
         // key={repo.id}
-        className="col-lg-6 col-xl-4 col-md-6 col-12 mt--50 mt_md--30 mt_sm--30"
+        className="col-lg-6 col-xl-4 col-md-6 col-12 mt--50 mt_md--30 mt_sm--30 mb-3"
       >
         <div className="rn-portfolio w-100">
           <div className="inner">

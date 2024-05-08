@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import ProfileHeader from "../home/header/ProfileHeader";
 import Repositories from "./repo/Repositories";
 import { AuthContex } from "../../provider/AuthProvider";
+import axios from "axios";
 
 const Profile = () => {
   const [userData, setUserData] = useState();
@@ -11,30 +12,27 @@ const Profile = () => {
 
   useEffect(() => {
     // fetch user data
-    fetch(
-      `https://api.github.com/users/${username}?clientId=${
-        import.meta.env.VITE_clientID
-      }&clientSecret=${import.meta.env.VITE_clientSecret}`
-    )
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        setUserData(data);
+    axios
+      .get(
+        `https://api.github.com/users/${username}?clientId=${
+          import.meta.env.VITE_clientID
+        }&clientSecret=${import.meta.env.VITE_clientSecret}`
+      )
+      .then((response) => {
+        setUserData(response.data);
       });
+  }, [username]);
 
-    fetch(
-      `https://api.github.com/users/${username}/repos?page=1&per_page=99&clientId=${
-        import.meta.env.VITE_clientID
-      }&clientSecret=${import.meta.env.VITE_clientSecret}`
-    )
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        setRepos(data);
+  useEffect(() => {
+    axios
+      .get(
+        `https://api.github.com/users/${username}/repos?page=1&per_page=99&clientId=${
+          import.meta.env.VITE_clientID
+        }&clientSecret=${import.meta.env.VITE_clientSecret}`
+      )
+      .then((response) => {
+        setRepos(response.data);
       });
-    // fetch repos
   }, [username]);
 
   return (

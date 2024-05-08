@@ -2,7 +2,7 @@
 import RepoList from "./RepoList";
 
 const Repositories = ({ repos, data }) => {
-  // console.log(data);
+  // console.log(repos);
   return (
     <div className="sr-content pt--30">
       <div className="container">
@@ -44,10 +44,10 @@ const Repositories = ({ repos, data }) => {
               </div>
               <div className="row row--25 mt--10 mt_md--10 mt_sm--10">
                 {repos
-                  ? repos.map((repo) => {
+                  ? repos?.map((repo) => {
                       return <RepoList repos={repo} key={repo.id} />;
                     })
-                  : null}
+                  : "Loading"}
               </div>
             </div>
           </div>
