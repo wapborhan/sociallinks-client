@@ -1,9 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
-import HomePage from "../pages/home/HomePage";
-import Profile from "../pages/profile/Profile";
 import Root from "../layout/Root";
 import ProfileLayout from "../layout/ProfileLayout";
-import Repositories from "../pages/profile/repo/Repositories";
+import HomePage from "../pages/home/HomePage";
+import Profile from "../pages/profile/Profile";
+import Repositories from "../pages/repo/Repositories";
 
 export const router = createBrowserRouter([
   {
@@ -29,16 +29,34 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path: "/",
+    path: "/profile",
+    exact: true,
     element: <ProfileLayout />,
     children: [
       {
-        path: "profile",
+        path: ":usernames",
+        exact: true,
         element: <Profile />,
       },
       {
-        path: "repo",
+        path: ":usernames/repos",
+        exact: true,
         element: <Repositories />,
+      },
+      {
+        path: ":usernames/followers",
+        exact: true,
+        element: "Coming Soon",
+      },
+      {
+        path: ":usernames/following",
+        exact: true,
+        element: "Coming Soon",
+      },
+      {
+        path: ":usernames/starred",
+        exact: true,
+        element: "Coming Soon",
       },
     ],
   },

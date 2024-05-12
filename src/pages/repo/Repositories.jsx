@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useContext, useEffect, useState } from "react";
 import RepoList from "./RepoList";
-import { AuthContex } from "../../../provider/AuthProvider";
+import { AuthContex } from "../../provider/AuthProvider";
 import axios from "axios";
 
 const Repositories = () => {

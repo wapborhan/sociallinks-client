@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const d = new Date();
@@ -13,9 +13,9 @@ const Footer = () => {
               </div>
               <p className="description mt--30">
                 © {d.getFullYear()}.{" "}
-                <span style={{ color: "#f9004d" }}>Find Devs </span> all rights
-                reserved. | Designed by{" "}
-                <Link target="_blank" href="https://www.srdreamlab.com">
+                <span style={{ color: "#f9004d" }}>{"Social Link's"} </span> all
+                rights reserved. | Designed by{" "}
+                <Link target="_blank" to="https://www.srdreamlab.com">
                   SR Dream Lab
                 </Link>
                 .

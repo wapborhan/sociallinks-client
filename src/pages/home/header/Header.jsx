@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContex } from "../../../provider/AuthProvider";
 
 const Header = () => {
+  const { user } = useContext(AuthContex);
+
   return (
     <header className="rn-header haeder-default black-logo-version header--fixed header--sticky">
       <div className="header-wrapper m--0 pl--105 pr--105 rn-popup-mobile-menu row align-items-center">
@@ -44,7 +48,10 @@ const Header = () => {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link smoth-animation" to="/profile">
+                  <Link
+                    className="nav-link smoth-animation"
+                    to={`/profile/${user?.reloadUserInfo?.screenName}`}
+                  >
                     My Profile
                   </Link>
                 </li>

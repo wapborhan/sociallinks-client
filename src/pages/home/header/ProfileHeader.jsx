@@ -1,12 +1,14 @@
 /* eslint-disable react/prop-types */
 import { useContext, useEffect, useState } from "react";
 import { FaMapMarkerAlt } from "react-icons/fa";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useParams } from "react-router-dom";
 import { AuthContex } from "../../../provider/AuthProvider";
 import axios from "axios";
 
 const ProfileHeader = () => {
   const [data, setUserData] = useState();
+  const { usernames } = useParams();
+  console.log(usernames);
 
   const { user } = useContext(AuthContex);
   const username = user?.reloadUserInfo?.screenName;
@@ -27,8 +29,6 @@ const ProfileHeader = () => {
         setUserData(response.data);
       });
   }, [username]);
-
-  console.log(data);
 
   return (
     <>
@@ -205,19 +205,39 @@ const ProfileHeader = () => {
               <div className="col-md-12">
                 <div className="navs text-center d-flex justify-content-center">
                   <ul className="d-flex">
-                    <NavLink className="" to="/profile">
+                    <NavLink
+                      activeClassName="active"
+                      to={`/profile/${usernames}`}
+                      end
+                    >
                       <li>Profile</li>
                     </NavLink>
-                    <NavLink className="" to="/repo">
+                    <NavLink
+                      activeClassName="active"
+                      to={`${usernames}/repos`}
+                      end
+                    >
                       <li>Repositories</li>
                     </NavLink>
-                    <NavLink className="" to="/followers">
+                    <NavLink
+                      activeClassName="active"
+                      to={`${usernames}/followers`}
+                      end
+                    >
                       <li>Followers</li>
                     </NavLink>
-                    <NavLink className="" to="/following">
+                    <NavLink
+                      activeClassName="active"
+                      to={`${usernames}/following`}
+                      end
+                    >
                       <li>Following</li>
                     </NavLink>
-                    <NavLink className="" to="/starred">
+                    <NavLink
+                      activeClassName="active"
+                      to={`${usernames}/starred`}
+                      end
+                    >
                       <li>Starred </li>
                     </NavLink>
                   </ul>
