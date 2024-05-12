@@ -11,8 +11,7 @@ const Banner = () => {
       .then((result) => {
         // The signed-in user info.
         const user = result.user;
-        console.log(user);
-        navigate("/profile");
+        navigate(`/profile/${user?.reloadUserInfo?.screenName}`);
       })
       .catch((error) => {
         // Handle Errors here.
