@@ -1,10 +1,10 @@
 import Banner from "./banner/Banner";
-import Header from "./header/Header";
+// import Header from "./header/Header";
 
 const HomePage = () => {
   return (
     <div>
-      <Header />
+      {/* <Header /> */}
       <Banner />
     </div>
   );

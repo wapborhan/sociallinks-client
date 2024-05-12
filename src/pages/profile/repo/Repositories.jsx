@@ -1,8 +1,29 @@
 /* eslint-disable react/prop-types */
+import { useContext, useEffect, useState } from "react";
 import RepoList from "./RepoList";
+import { AuthContex } from "../../../provider/AuthProvider";
+import axios from "axios";
 
-const Repositories = ({ repos, data }) => {
-  // console.log(repos);
+const Repositories = () => {
+  const [repos, setRepos] = useState();
+  const { user } = useContext(AuthContex);
+  const username = user?.reloadUserInfo?.screenName;
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://api.github.com/users/${username}/repos?page=1&per_page=99&clientId=${
+          import.meta.env.VITE_clientID
+        }&clientSecret=${import.meta.env.VITE_clientSecret}`,
+        {
+          auth: import.meta.env.VITE_GITHUB_USERNAME,
+          password: import.meta.env.VITE_GITHUB_OLD_TOKEN,
+        }
+      )
+      .then((response) => {
+        setRepos(response.data);
+      });
+  }, [username]);
   return (
     <div className="sr-content pt--30">
       <div className="container">
@@ -22,7 +43,7 @@ const Repositories = ({ repos, data }) => {
                     <span className="subtitle">
                       Visit portfolio and keep your feedback
                     </span>
-                    <h2 className="title">{data?.name} Repositories</h2>
+                    <h2 className="title"> Repositories</h2>
                   </div>
                 </div>
               </div>
