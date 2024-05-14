@@ -1,8 +1,10 @@
+import { Toaster } from "react-hot-toast";
 import LinkList from "./LinkList";
 
 const Profile = () => {
   return (
     <div className="sr-content pt--30">
+      <Toaster position="top-center" reverseOrder={false} />
       <div className="container">
         <div className="sect-main">
           {/* <!-- Start Portfolio Area --> */}
@@ -24,9 +26,7 @@ const Profile = () => {
                   </div>
                 </div>
               </div>
-              <LinkList />
-              <LinkList />
-              <LinkList />
+              <LinkList />;
             </div>
           </div>
         </div>

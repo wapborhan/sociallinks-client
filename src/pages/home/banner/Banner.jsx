@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AuthContex } from "../../../provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const Banner = () => {
   const { createUser, user, logOut } = useContext(AuthContex);
@@ -11,6 +12,7 @@ const Banner = () => {
       .then((result) => {
         // The signed-in user info.
         const user = result.user;
+        toast.success("Successfully Signin!");
         navigate(`/profile/${user?.reloadUserInfo?.screenName}`);
       })
       .catch((error) => {
@@ -19,6 +21,10 @@ const Banner = () => {
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
       });
+  };
+  const signOutOnGithub = () => {
+    logOut();
+    toast.error("Logout");
   };
 
   return (
@@ -53,7 +59,7 @@ const Banner = () => {
                         <span className="title"></span>
                       </div>
                       {user?.displayName ? (
-                        <a className="rn-btn" onClick={logOut}>
+                        <a className="rn-btn" onClick={signOutOnGithub}>
                           <span>Log out</span>
                         </a>
                       ) : (

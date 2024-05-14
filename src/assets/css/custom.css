@@ -228,3 +228,7 @@ a {
 .slide .content .inner {
   margin-bottom: 60px !important;
 }
+
+.cursor-pointer {
+  cursor: pointer;
+}
