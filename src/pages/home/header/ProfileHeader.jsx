@@ -50,7 +50,7 @@ const ProfileHeader = () => {
             <div className="row padding-tb m_dec-top align-items-center d-flex">
               <div className="col-lg-6">
                 <div className="header-left">
-                  {data?.avatar_url ? (
+                  {data ? (
                     <div className="header-thumbnail">
                       <img alt={data?.name} src={data?.avatar_url} />
                     </div>
@@ -61,7 +61,7 @@ const ProfileHeader = () => {
                   )}
 
                   <div className="header-info-content w-50">
-                    {data?.name ? (
+                    {data ? (
                       <h4 className="title">
                         <Link href={data?.html_url}>
                           {data?.name}
@@ -73,7 +73,7 @@ const ProfileHeader = () => {
                         <span className="placeholder col-12 rounded w-100"></span>
                       </h4>
                     )}
-                    {data?.location ? (
+                    {data ? (
                       <div className="status-info mb-5">
                         <span className="me-3">
                           <FaMapMarkerAlt />
