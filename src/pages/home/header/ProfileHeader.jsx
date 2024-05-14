@@ -13,22 +13,22 @@ const ProfileHeader = () => {
   const { user } = useContext(AuthContex);
   const username = user?.reloadUserInfo?.screenName;
 
-  useEffect(() => {
-    // fetch user data
-    axios
-      .get(
-        `https://api.github.com/users/${username}?clientId=${
-          import.meta.env.VITE_clientID
-        }&clientSecret=${import.meta.env.VITE_clientSecret}`,
-        {
-          auth: import.meta.env.VITE_GITHUB_USERNAME,
-          password: import.meta.env.VITE_GITHUB_OLD_TOKEN,
-        }
-      )
-      .then((response) => {
-        setUserData(response.data);
-      });
-  }, [username]);
+  // useEffect(() => {
+  //   // fetch user data
+  //   axios
+  //     .get(
+  //       `https://api.github.com/users/${username}?clientId=${
+  //         import.meta.env.VITE_clientID
+  //       }&clientSecret=${import.meta.env.VITE_clientSecret}`,
+  //       {
+  //         auth: import.meta.env.VITE_GITHUB_USERNAME,
+  //         password: import.meta.env.VITE_GITHUB_OLD_TOKEN,
+  //       }
+  //     )
+  //     .then((response) => {
+  //       setUserData(response.data);
+  //     });
+  // }, [username]);
 
   return (
     <>
