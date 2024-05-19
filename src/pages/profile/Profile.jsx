@@ -26,7 +26,7 @@ const Profile = () => {
                   </div>
                 </div>
               </div>
-              <LinkList />;
+              <LinkList />
             </div>
           </div>
         </div>
