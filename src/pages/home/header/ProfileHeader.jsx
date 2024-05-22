@@ -4,20 +4,19 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 import { Link, NavLink, useParams } from "react-router-dom";
 import { AuthContex } from "../../../provider/AuthProvider";
 import axios from "axios";
+import useSingleUser from "../../../hooks/useSingleUser";
 
 const ProfileHeader = () => {
   const [data, setUserData] = useState();
   const { usernames } = useParams();
-  console.log(usernames);
 
-  const { user } = useContext(AuthContex);
-  const username = user?.reloadUserInfo?.screenName;
+  const [singleUser] = useSingleUser(usernames);
 
   // useEffect(() => {
   //   // fetch user data
   //   axios
   //     .get(
-  //       `https://api.github.com/users/${username}?clientId=${
+  //       `https://api.github.com/users/${singleUser?.username}?clientId=${
   //         import.meta.env.VITE_clientID
   //       }&clientSecret=${import.meta.env.VITE_clientSecret}`,
   //       {
@@ -28,7 +27,7 @@ const ProfileHeader = () => {
   //     .then((response) => {
   //       setUserData(response.data);
   //     });
-  // }, [username]);
+  // }, [singleUser?.username]);
 
   return (
     <>
@@ -206,35 +205,35 @@ const ProfileHeader = () => {
                 <div className="navs text-center d-flex justify-content-center">
                   <ul className="d-flex">
                     <NavLink
-                      activeClassName="active"
+                      activeclassname="active"
                       to={`/profile/${usernames}`}
                       end
                     >
                       <li>Profile</li>
                     </NavLink>
                     <NavLink
-                      activeClassName="active"
+                      activeclassname="active"
                       to={`${usernames}/repos`}
                       end
                     >
                       <li>Repositories</li>
                     </NavLink>
                     <NavLink
-                      activeClassName="active"
+                      activeclassname="active"
                       to={`${usernames}/followers`}
                       end
                     >
                       <li>Followers</li>
                     </NavLink>
                     <NavLink
-                      activeClassName="active"
+                      activeclassname="active"
                       to={`${usernames}/following`}
                       end
                     >
                       <li>Following</li>
                     </NavLink>
                     <NavLink
-                      activeClassName="active"
+                      activeclassname="active"
                       to={`${usernames}/starred`}
                       end
                     >

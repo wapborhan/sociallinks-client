@@ -4,6 +4,7 @@ import ProfileLayout from "../layout/ProfileLayout";
 import HomePage from "../pages/home/HomePage";
 import Profile from "../pages/profile/Profile";
 import Repositories from "../pages/repo/Repositories";
+import UpdateProfile from "../pages/profile/update/UpdateProfile";
 
 export const router = createBrowserRouter([
   {
@@ -26,6 +27,11 @@ export const router = createBrowserRouter([
         path: "liked-profile",
         element: "Under Constraction",
       },
+      {
+        path: ":usernames/update-profile",
+        exact: true,
+        element: <UpdateProfile />,
+      },
     ],
   },
   {
@@ -43,6 +49,7 @@ export const router = createBrowserRouter([
         exact: true,
         element: <Repositories />,
       },
+
       {
         path: ":usernames/followers",
         exact: true,

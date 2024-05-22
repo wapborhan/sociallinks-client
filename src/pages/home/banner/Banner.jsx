@@ -2,18 +2,87 @@ import { useContext } from "react";
 import { AuthContex } from "../../../provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
 
 const Banner = () => {
   const { createUser, user, logOut } = useContext(AuthContex);
   const navigate = useNavigate();
+  const axiosPublic = useAxiosPublic();
 
+  const userData = {
+    address: "",
+    bio: "",
+    links: [
+      {
+        title: "github",
+        username: "",
+      },
+      {
+        title: "hacker-rank",
+        username: "",
+      },
+      {
+        title: "code-forces",
+        username: "",
+      },
+      {
+        title: "linkedin",
+        username: "",
+      },
+      {
+        title: "resume",
+        username: "",
+      },
+      {
+        title: "portfolio",
+        username: "",
+      },
+      {
+        title: "facebook",
+        username: "",
+      },
+      {
+        title: "twitter",
+        username: "",
+      },
+      {
+        title: "instagram",
+        username: "",
+      },
+    ],
+  };
   const signInGithub = () => {
     createUser()
       .then((result) => {
-        // The signed-in user info.
-        const user = result.user;
-        toast.success("Successfully Signin!");
-        navigate(`/profile/${user?.reloadUserInfo?.screenName}`);
+        const data = result?.user?.reloadUserInfo;
+
+        axiosPublic
+          .post(
+            "/users",
+            {
+              name: data?.displayName,
+              email: data?.email,
+              username: data?.screenName,
+              photoUrl: data?.photoUrl,
+              ...userData,
+            },
+            {
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          )
+          .then((response) => {
+            const result = response.data;
+            if (response.data) {
+              toast.success("Successfully Signin!");
+              navigate(`/profile/${data?.screenName}`);
+            }
+            console.log(result);
+          })
+          .catch((error) => {
+            console.error("Something went wrong!", error);
+          });
       })
       .catch((error) => {
         // Handle Errors here.

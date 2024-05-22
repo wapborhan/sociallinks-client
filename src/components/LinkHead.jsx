@@ -1,8 +1,8 @@
 const LinkHead = ({ cattTitle }) => {
   return (
     <div className="row">
-      <div className="col-md-8">
-        <div className="catt-title">
+      <div className="col-md-12">
+        <div className="catt-title mb--20">
           <h3>
             Some of <span className="txt-success">My</span> Important Links on
           </h3>
