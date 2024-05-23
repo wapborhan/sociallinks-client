@@ -301,5 +301,16 @@ a {
 }
 
 .white-version .form-group input {
-  color: #888;
+  color: #000;
+}
+
+.white-version .form-group input::placeholder {
+  color: #a6a6a6;
+  opacity: 1;
+  /* Firefox */
+}
+
+.white-version .form-group input::-ms-input-placeholder {
+  /* Edge 12 -18 */
+  color: #a6a6a6;
 }

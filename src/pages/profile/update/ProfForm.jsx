@@ -1,62 +1,60 @@
-import { FaGithub, FaHackerrank } from "react-icons/fa6";
-import { SiCodeforces } from "react-icons/si";
 import LinkHead from "../../../components/LinkHead";
+import { FaFilePdf, FaGlobe, FaLinkedin } from "react-icons/fa6";
 
-const CodingForm = ({ register, singleUser }) => {
+const ProfForm = ({ register, singleUser }) => {
   return (
     <>
-      <LinkHead cattTitle={"Coding"} />
+      <LinkHead cattTitle={"Professional"} />
       <div className="col-lg-4">
         <div className="form-group">
-          <label htmlFor="contact-name">Github</label>
+          <label htmlFor="contact-name">LinkedIn</label>
           <div className="d-flex labels">
             <div className="ico-btn p-2">
-              <FaGithub />
+              <FaLinkedin />
             </div>
             <input
               className="form-control form-control-lg"
-              name="github"
+              name="linkedin"
               type="text"
-              defaultValue={singleUser && singleUser?.links?.github}
               placeholder="Username"
-              {...register("github")}
+              defaultValue={singleUser && singleUser?.links?.linkedin}
+              {...register("linkedin")}
             />
           </div>
         </div>
       </div>
       <div className="col-lg-4">
         <div className="form-group">
-          <label htmlFor="contact-phone">Hacker Rank</label>
+          <label htmlFor="contact-phone">Resume</label>
           <div className="d-flex labels">
             <div className="ico-btn p-2">
-              <FaHackerrank />
+              <FaFilePdf />
             </div>
             <input
               className="form-control form-control-lg"
-              name="hackerRank"
+              name="resume"
               type="text"
-              defaultValue={singleUser && singleUser?.links?.hackerRank}
               placeholder="Username"
-              {...register("hacker-rank")}
+              defaultValue={singleUser && singleUser?.links?.portfolio}
+              {...register("resume")}
             />
           </div>
         </div>
       </div>
       <div className="col-lg-4">
         <div className="form-group">
-          <label htmlFor="contact-phone">Code Forces</label>
+          <label htmlFor="contact-phone">Website</label>
           <div className="d-flex labels">
             <div className="ico-btn p-2">
-              <SiCodeforces />
+              <FaGlobe />
             </div>
             <input
               className="form-control form-control-lg"
-              name="codeForces"
-              id="contact-name"
+              name="portfolio"
               type="text"
-              defaultValue={singleUser && singleUser?.links?.codeForces}
               placeholder="Username"
-              {...register("codeForces")}
+              defaultValue={singleUser && singleUser?.links?.portfolio}
+              {...register("portfolio")}
             />
           </div>
         </div>
@@ -65,4 +63,4 @@ const CodingForm = ({ register, singleUser }) => {
   );
 };
 
-export default CodingForm;
+export default ProfForm;

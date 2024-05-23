@@ -7,13 +7,13 @@ import {
 import {
   FaDiscord,
   FaFilePdf,
-  FaSlack,
   FaSquareFacebook,
   FaSquareInstagram,
   FaSquareTwitter,
   FaSquareWhatsapp,
   FaTelegram,
 } from "react-icons/fa6";
+import { PiTextBFill } from "react-icons/pi";
 import { SiCodeforces } from "react-icons/si";
 
 const categories = [
@@ -36,14 +36,14 @@ const linkCards = [
     title: "Hacker Rank ",
     categorie: "coding",
     icon: <FaHackerrank />,
-    LinkName: "hacker-rank",
+    LinkName: "hackerRank",
     desc: "Find out my projects",
   },
   {
     title: "Code Forces",
     categorie: "coding",
     icon: <SiCodeforces />,
-    LinkName: "code-forces",
+    LinkName: "codeForces",
     desc: "Find out my projects",
   },
   {
@@ -88,13 +88,7 @@ const linkCards = [
     LinkName: "instagram",
     desc: "My Portfolio",
   },
-  {
-    title: "Blog",
-    categorie: "personal",
-    icon: <FaSquareInstagram />,
-    LinkName: "blog",
-    desc: "My Portfolio",
-  },
+
   {
     title: "Whatsapp",
     categorie: "instant-messaging",
@@ -110,17 +104,17 @@ const linkCards = [
     desc: "My Portfolio",
   },
   {
-    title: "Slack",
-    categorie: "instant-messaging",
-    icon: <FaSlack />,
-    LinkName: "slack",
-    desc: "My Portfolio",
-  },
-  {
     title: "Discord",
     categorie: "instant-messaging",
     icon: <FaDiscord />,
     LinkName: "discord",
+    desc: "My Portfolio",
+  },
+  {
+    title: "Blog",
+    categorie: "personal",
+    icon: <PiTextBFill />,
+    LinkName: "blog",
     desc: "My Portfolio",
   },
 ];

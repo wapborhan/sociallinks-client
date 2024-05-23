@@ -1,62 +1,64 @@
-import { FaGithub, FaHackerrank } from "react-icons/fa6";
-import { SiCodeforces } from "react-icons/si";
+import {
+  FaSquareFacebook,
+  FaSquareInstagram,
+  FaSquareXTwitter,
+} from "react-icons/fa6";
 import LinkHead from "../../../components/LinkHead";
 
-const CodingForm = ({ register, singleUser }) => {
+const SocialForm = ({ register, singleUser }) => {
   return (
     <>
-      <LinkHead cattTitle={"Coding"} />
+      <LinkHead cattTitle={"Social"} />
       <div className="col-lg-4">
         <div className="form-group">
-          <label htmlFor="contact-name">Github</label>
+          <label htmlFor="contact-name">Facebook</label>
           <div className="d-flex labels">
             <div className="ico-btn p-2">
-              <FaGithub />
+              <FaSquareFacebook />
             </div>
             <input
               className="form-control form-control-lg"
-              name="github"
+              name="facebook"
               type="text"
-              defaultValue={singleUser && singleUser?.links?.github}
               placeholder="Username"
-              {...register("github")}
+              defaultValue={singleUser && singleUser?.links?.facebook}
+              {...register("facebook")}
             />
           </div>
         </div>
       </div>
       <div className="col-lg-4">
         <div className="form-group">
-          <label htmlFor="contact-phone">Hacker Rank</label>
+          <label htmlFor="contact-phone">Twitter</label>
           <div className="d-flex labels">
             <div className="ico-btn p-2">
-              <FaHackerrank />
+              <FaSquareXTwitter />
             </div>
             <input
               className="form-control form-control-lg"
-              name="hackerRank"
+              name="twitter"
               type="text"
-              defaultValue={singleUser && singleUser?.links?.hackerRank}
               placeholder="Username"
-              {...register("hacker-rank")}
+              defaultValue={singleUser && singleUser?.links?.twitter}
+              {...register("twitter")}
             />
           </div>
         </div>
       </div>
       <div className="col-lg-4">
         <div className="form-group">
-          <label htmlFor="contact-phone">Code Forces</label>
+          <label htmlFor="contact-phone">Instagram</label>
           <div className="d-flex labels">
             <div className="ico-btn p-2">
-              <SiCodeforces />
+              <FaSquareInstagram />
             </div>
             <input
               className="form-control form-control-lg"
-              name="codeForces"
-              id="contact-name"
+              name="instagram"
               type="text"
-              defaultValue={singleUser && singleUser?.links?.codeForces}
               placeholder="Username"
-              {...register("codeForces")}
+              defaultValue={singleUser && singleUser?.links?.instagram}
+              {...register("instagram")}
             />
           </div>
         </div>
@@ -65,4 +67,4 @@ const CodingForm = ({ register, singleUser }) => {
   );
 };
 
-export default CodingForm;
+export default SocialForm;
