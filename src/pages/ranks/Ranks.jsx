@@ -1,4 +1,11 @@
+import useAllUsers from "../../hooks/useAllUsers";
+import RankList from "./RankList";
+
 const Ranks = () => {
+  const [allUsers] = useAllUsers();
+
+  console.log(allUsers);
+
   return (
     <div className="sr-content pt--30 mt--80">
       <div className="container">
@@ -8,13 +15,7 @@ const Ranks = () => {
             <div className="container">
               <div className="row">
                 <div className="col-lg-12">
-                  <div
-                    data-aos="fade-up"
-                    data-aos-duration="500"
-                    data-aos-delay="100"
-                    data-aos-once="true"
-                    className="section-title text-center"
-                  >
+                  <div className="section-title text-center">
                     <span className="subtitle">
                       Visit portfolio and keep your feedback
                     </span>
@@ -22,7 +23,9 @@ const Ranks = () => {
                   </div>
                 </div>
               </div>
-              {/* <LinkList /> */}
+              {allUsers.map((user, idx) => (
+                <RankList key={idx} user={user} />
+              ))}
             </div>
           </div>
         </div>

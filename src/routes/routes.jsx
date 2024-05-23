@@ -18,7 +18,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "about",
-        element: "Under Constraction",
+        element: <Ranks />,
       },
       {
         path: "ranks",
@@ -26,7 +26,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "liked-profile",
-        element: "Under Constraction",
+        element: <Ranks />,
       },
       {
         path: "update-profile/:usernames",
