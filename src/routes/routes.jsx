@@ -5,6 +5,7 @@ import HomePage from "../pages/home/HomePage";
 import Profile from "../pages/profile/Profile";
 import Repositories from "../pages/repo/Repositories";
 import UpdateProfile from "../pages/profile/update/UpdateProfile";
+import Ranks from "../pages/ranks/Ranks";
 
 export const router = createBrowserRouter([
   {
@@ -21,14 +22,14 @@ export const router = createBrowserRouter([
       },
       {
         path: "ranks",
-        element: "Under Constraction",
+        element: <Ranks />,
       },
       {
         path: "liked-profile",
         element: "Under Constraction",
       },
       {
-        path: ":usernames/update-profile",
+        path: "update-profile/:usernames",
         exact: true,
         element: <UpdateProfile />,
       },

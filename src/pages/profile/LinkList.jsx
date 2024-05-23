@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
@@ -13,20 +14,16 @@ const LinkList = () => {
   const { usernames } = useParams();
   const { user } = useContext(AuthContex);
   // const [singleUser, refetch] = useSingleUser(user?.reloadUserInfo?.screenName);
-  const [singleUser, refetch] = useSingleUser(usernames);
+  const [singleUser] = useSingleUser(usernames);
 
   useEffect(() => {
-    refetch();
-    if (user && singleUser?.links) {
-      const userLinks = singleUser?.links.map((link) =>
-        link?.title.toLowerCase()
+    if (singleUser && singleUser.links) {
+      const filteredLinkCards = linkCards.filter(
+        (card) => singleUser.links[card.LinkName]
       );
-      const filteredCards = linkCards.filter((card) =>
-        userLinks.includes(card.title.toLowerCase())
-      );
-      setFilteredLinkCards(filteredCards);
+      setFilteredLinkCards(filteredLinkCards);
     }
-  }, [singleUser, linkCards, user, refetch]);
+  }, [linkCards, singleUser]);
 
   return (
     <>

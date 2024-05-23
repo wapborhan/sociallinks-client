@@ -12,6 +12,8 @@ const ProfileHeader = () => {
 
   const [singleUser] = useSingleUser(usernames);
 
+  console.log(singleUser);
+
   // useEffect(() => {
   //   // fetch user data
   //   axios
@@ -49,9 +51,9 @@ const ProfileHeader = () => {
             <div className="row padding-tb m_dec-top align-items-center d-flex">
               <div className="col-lg-6">
                 <div className="header-left">
-                  {data ? (
+                  {singleUser ? (
                     <div className="header-thumbnail">
-                      <img alt={data?.name} src={data?.avatar_url} />
+                      <img alt={singleUser?.name} src={singleUser?.photoUrl} />
                     </div>
                   ) : (
                     <div className="header-thumbnail placeholder-glow">
@@ -60,10 +62,10 @@ const ProfileHeader = () => {
                   )}
 
                   <div className="header-info-content w-50">
-                    {data ? (
+                    {singleUser ? (
                       <h4 className="title">
-                        <Link href={data?.html_url}>
-                          {data?.name}
+                        <Link>
+                          {singleUser?.name}
                           {/* <FaExternalLinkAlt className="ms-3" /> */}
                         </Link>
                       </h4>
@@ -72,12 +74,12 @@ const ProfileHeader = () => {
                         <span className="placeholder col-12 rounded w-100"></span>
                       </h4>
                     )}
-                    {data ? (
+                    {singleUser ? (
                       <div className="status-info mb-5">
                         <span className="me-3">
                           <FaMapMarkerAlt />
                         </span>
-                        {data?.location}
+                        {singleUser?.address}
                       </div>
                     ) : (
                       <div className="status-info d-flex mb-5 placeholder-glow w-100">

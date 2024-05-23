@@ -50,7 +50,7 @@ const Header = () => {
                 <li className="nav-item">
                   <Link
                     className="nav-link smoth-animation"
-                    to={`/${user?.reloadUserInfo?.screenName}/update-profile`}
+                    to={`/update-profile/${user?.reloadUserInfo?.screenName}`}
                   >
                     Update Profiles
                   </Link>

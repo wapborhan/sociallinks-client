@@ -9,48 +9,6 @@ const Banner = () => {
   const navigate = useNavigate();
   const axiosPublic = useAxiosPublic();
 
-  const userData = {
-    address: "",
-    bio: "",
-    links: [
-      {
-        title: "github",
-        username: "",
-      },
-      {
-        title: "hacker-rank",
-        username: "",
-      },
-      {
-        title: "code-forces",
-        username: "",
-      },
-      {
-        title: "linkedin",
-        username: "",
-      },
-      {
-        title: "resume",
-        username: "",
-      },
-      {
-        title: "portfolio",
-        username: "",
-      },
-      {
-        title: "facebook",
-        username: "",
-      },
-      {
-        title: "twitter",
-        username: "",
-      },
-      {
-        title: "instagram",
-        username: "",
-      },
-    ],
-  };
   const signInGithub = () => {
     createUser()
       .then((result) => {
@@ -64,7 +22,11 @@ const Banner = () => {
               email: data?.email,
               username: data?.screenName,
               photoUrl: data?.photoUrl,
-              ...userData,
+              address: "",
+              bio: "",
+              links: {
+                github: data?.screenName,
+              },
             },
             {
               headers: {
@@ -74,6 +36,8 @@ const Banner = () => {
           )
           .then((response) => {
             const result = response.data;
+            console.log(response);
+
             if (response.data) {
               toast.success("Successfully Signin!");
               navigate(`/profile/${data?.screenName}`);
@@ -82,13 +46,16 @@ const Banner = () => {
           })
           .catch((error) => {
             console.error("Something went wrong!", error);
+
+            if (error?.response?.status === 409) {
+              toast.success("Successfully Signin!");
+              navigate(`/profile/${data?.screenName}`);
+            }
           });
       })
       .catch((error) => {
         // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
+        console.log(error);
       });
   };
   const signOutOnGithub = () => {
