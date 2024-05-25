@@ -61,7 +61,7 @@ const ProfileHeader = () => {
                     </div>
                   )}
 
-                  <div className="header-info-content w-50">
+                  <div className="header-info-content lg:w-50 w-full">
                     {singleUser ? (
                       <h4 className="title">
                         <Link>
@@ -205,7 +205,7 @@ const ProfileHeader = () => {
               </div>
               <div className="col-md-12">
                 <div className="navs text-center d-flex justify-content-center">
-                  <ul className="d-flex">
+                  <ul className="d-flex flex-wrap p-0">
                     <NavLink
                       activeclassname="active"
                       to={`/profile/${usernames}`}

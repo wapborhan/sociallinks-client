@@ -23,19 +23,16 @@ const UpdateProfile = () => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm({
-    defaultValues: {
-      github: singleUser?.links?.github,
-      facebook: singleUser?.links?.facebook,
-    },
-  });
+  } = useForm();
 
   useEffect(() => {
-    reset({
-      github: singleUser?.links?.github,
-      facebook: singleUser?.links?.facebook,
-    });
-  }, [reset]);
+    if (singleUser) {
+      reset({
+        github: singleUser?.links?.github,
+        hackerRank: singleUser?.links?.facebook,
+      });
+    }
+  }, [singleUser, reset]);
 
   const onSubmit = (data) => {
     // console.log(data);
