@@ -38,7 +38,11 @@ const LinkList = () => {
             <div className="row row--25 mt--10 mt_md--10 mt_sm--10">
               {filteredLinks.length > 0
                 ? filteredLinks.map((linkCard, idx) => (
-                    <Linkcard key={idx} linkCard={linkCard} />
+                    <Linkcard
+                      key={idx}
+                      linkCard={linkCard}
+                      link={singleUser.links}
+                    />
                   ))
                 : ""}
             </div>
