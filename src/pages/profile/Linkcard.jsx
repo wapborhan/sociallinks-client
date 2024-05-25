@@ -45,10 +45,10 @@ const Linkcard = ({ linkCard, link }) => {
       navigator.clipboard
         .writeText(profileLink)
         .then(() => {
-          toast.success("Link copied to clipboard!");
+          toast.success(`${title} link copied to clipboard!`);
         })
         .catch((err) => {
-          toast.error("Failed to copy link!");
+          toast.error(`${err} ${title} failed to copy link!`);
         });
     } else {
       toast.error("No link available to copy!");
