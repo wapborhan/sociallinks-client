@@ -6,21 +6,49 @@ import SocialForm from "./SocialForm";
 import MessageForm from "./MessageForm";
 import PersonalForm from "./PersonalForm";
 import useSingleUser from "../../../hooks/useSingleUser";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContex } from "../../../provider/AuthProvider";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const UpdateProfile = () => {
   const { user } = useContext(AuthContex);
   const [singleUser] = useSingleUser(user?.reloadUserInfo?.screenName);
+  const axiosPublic = useAxiosPublic();
+  const navigate = useNavigate();
 
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      github: singleUser?.links?.github,
+      facebook: singleUser?.links?.facebook,
+    },
+  });
+
+  useEffect(() => {
+    reset({
+      github: singleUser?.links?.github,
+      facebook: singleUser?.links?.facebook,
+    });
+  }, [reset]);
 
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log(data);
+    axiosPublic
+      .put(`/user/${user?.reloadUserInfo?.screenName}`, data)
+      .then((response) => {
+        if (response.status === 200) {
+          toast.success("Successfully Updated Links!");
+          navigate(`/profile/${user?.reloadUserInfo?.screenName}`);
+        }
+        console.log(response);
+      })
+      .catch((error) => console.log(error));
   };
 
   return (

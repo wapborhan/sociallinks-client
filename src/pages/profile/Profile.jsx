@@ -12,13 +12,7 @@ const Profile = () => {
             <div className="container">
               <div className="row">
                 <div className="col-lg-12">
-                  <div
-                    data-aos="fade-up"
-                    data-aos-duration="500"
-                    data-aos-delay="100"
-                    data-aos-once="true"
-                    className="section-title text-center"
-                  >
+                  <div className="section-title text-center">
                     <span className="subtitle">
                       Visit portfolio and keep your feedback
                     </span>

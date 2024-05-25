@@ -17,7 +17,7 @@ const CodingForm = ({ register, singleUser }) => {
               className="form-control form-control-lg"
               name="github"
               type="text"
-              defaultValue={singleUser && singleUser?.links?.github}
+              // defaultValue={singleUser && singleUser?.links?.github}
               placeholder="Username"
               {...register("github")}
             />
@@ -35,9 +35,9 @@ const CodingForm = ({ register, singleUser }) => {
               className="form-control form-control-lg"
               name="hackerRank"
               type="text"
-              defaultValue={singleUser && singleUser?.links?.hackerRank}
+              // defaultValue={singleUser && singleUser?.links?.hackerRank}
               placeholder="Username"
-              {...register("hacker-rank")}
+              {...register("hackerRank")}
             />
           </div>
         </div>
