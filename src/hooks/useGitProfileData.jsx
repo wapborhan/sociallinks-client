@@ -3,7 +3,7 @@ import axios from "axios";
 import { useContext } from "react";
 import { AuthContex } from "../provider/AuthProvider";
 
-const useGitProfileData = () => {
+const useGitProfileData = (username) => {
   const { user } = useContext(AuthContex);
 
   const {
@@ -15,11 +15,9 @@ const useGitProfileData = () => {
     enabled: !!user,
     queryFn: async () => {
       const res = await axios.get(
-        `https://api.github.com/users/${
-          user?.reloadUserInfo?.screenName
-        }?clientId=${import.meta.env.VITE_clientID}&clientSecret=${
-          import.meta.env.VITE_clientSecret
-        }`,
+        `https://api.github.com/users/${username}?clientId=${
+          import.meta.env.VITE_clientID
+        }&clientSecret=${import.meta.env.VITE_clientSecret}`,
         {
           auth: import.meta.env.VITE_GITHUB_USERNAME,
           password: import.meta.env.VITE_GITHUB_OLD_TOKEN,

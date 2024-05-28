@@ -6,7 +6,7 @@ import useGitProfileData from "../../../hooks/useGitProfileData";
 
 const ProfileHeader = () => {
   const { usernames } = useParams();
-  const [gitProfileData, error, isError] = useGitProfileData();
+  const [gitProfileData, error, isError] = useGitProfileData(usernames);
   const [singleUser] = useSingleUser(usernames);
 
   return (

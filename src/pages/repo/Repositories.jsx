@@ -2,9 +2,11 @@
 import RepoList from "./RepoList";
 import PlaceHolderCard from "../../components/PlaceHolderCard";
 import useGitRepoData from "../../hooks/useGitRepoData";
+import { useParams } from "react-router-dom";
 
 const Repositories = () => {
-  const [gitRepoData, error, isError] = useGitRepoData();
+  const { usernames } = useParams();
+  const [gitRepoData, error, isError] = useGitRepoData(usernames);
 
   console.log(error, isError);
 
