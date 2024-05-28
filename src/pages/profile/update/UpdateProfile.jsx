@@ -11,6 +11,7 @@ import { AuthContex } from "../../../provider/AuthProvider";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import OthersForm from "./OthersForm";
 
 const UpdateProfile = () => {
   const { user } = useContext(AuthContex);
@@ -36,8 +37,29 @@ const UpdateProfile = () => {
 
   const onSubmit = (data) => {
     // console.log(data);
+    const formData = {
+      bio: data.bio,
+      address: data.address,
+      links: {
+        blog: data.blog,
+        codeForces: data.codeForces,
+        discord: data.discord,
+        facebook: data.facebook,
+        github: data.github,
+        hackerRank: data.hackerRank,
+        instagram: data.instagram,
+        linkedin: data.linkedin,
+        portfolio: data.portfolio,
+        resume: data.resume,
+        telegram: data.telegram,
+        twitter: data.twitter,
+        whatsapp: data.whatsapp,
+      },
+    };
+
+    // console.log(`Bio Data`, formData);
     axiosPublic
-      .put(`/user/${user?.reloadUserInfo?.screenName}`, data)
+      .put(`/user/${user?.reloadUserInfo?.screenName}`, formData)
       .then((response) => {
         if (response.status === 200) {
           toast.success("Successfully Updated Links!");
@@ -97,6 +119,11 @@ const UpdateProfile = () => {
                           singleUser={singleUser}
                         />
                         <PersonalForm
+                          register={register}
+                          errors={errors}
+                          singleUser={singleUser}
+                        />
+                        <OthersForm
                           register={register}
                           errors={errors}
                           singleUser={singleUser}

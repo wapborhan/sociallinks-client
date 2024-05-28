@@ -1,30 +1,13 @@
 /* eslint-disable react/prop-types */
-import { useContext, useEffect, useState } from "react";
 import RepoList from "./RepoList";
-import { AuthContex } from "../../provider/AuthProvider";
-import axios from "axios";
 import PlaceHolderCard from "../../components/PlaceHolderCard";
+import useGitRepoData from "../../hooks/useGitRepoData";
 
 const Repositories = () => {
-  const [repos, setRepos] = useState();
-  const { user } = useContext(AuthContex);
-  const username = user?.reloadUserInfo?.screenName;
+  const [gitRepoData, error, isError] = useGitRepoData();
 
-  // useEffect(() => {
-  //   axios
-  //     .get(
-  //       `https://api.github.com/users/${username}/repos?page=1&per_page=99&clientId=${
-  //         import.meta.env.VITE_clientID
-  //       }&clientSecret=${import.meta.env.VITE_clientSecret}`,
-  //       {
-  //         auth: import.meta.env.VITE_GITHUB_USERNAME,
-  //         password: import.meta.env.VITE_GITHUB_OLD_TOKEN,
-  //       }
-  //     )
-  //     .then((response) => {
-  //       setRepos(response.data);
-  //     });
-  // }, [username]);
+  console.log(error, isError);
+
   return (
     <div className="sr-content pt--30">
       <div className="container">
@@ -65,10 +48,12 @@ const Repositories = () => {
                 </div>
               </div>
               <div className="row row--25 mt--10 mt_md--10 mt_sm--10">
-                {repos ? (
-                  repos?.map((repo) => {
-                    return <RepoList repos={repo} key={repo.id} />;
-                  })
+                {isError ? (
+                  <div>Error: API rate limit exceeded.</div>
+                ) : gitRepoData.length > 0 ? (
+                  gitRepoData.map((repo) => (
+                    <RepoList repos={repo} key={repo.id} />
+                  ))
                 ) : (
                   <>
                     <PlaceHolderCard />

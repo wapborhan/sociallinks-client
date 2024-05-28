@@ -9,7 +9,7 @@ const Linkcard = ({ linkCard, link }) => {
 
   const linkValue = link[LinkName];
 
-  console.log(LinkName.toLowerCase());
+  // console.log(LinkName.toLowerCase());
 
   const getProfileLink = () => {
     switch (LinkName) {

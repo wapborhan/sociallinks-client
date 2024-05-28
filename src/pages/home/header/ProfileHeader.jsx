@@ -1,36 +1,13 @@
 /* eslint-disable react/prop-types */
-import { useContext, useEffect, useState } from "react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { Link, NavLink, useParams } from "react-router-dom";
-import { AuthContex } from "../../../provider/AuthProvider";
-import axios from "axios";
 import useSingleUser from "../../../hooks/useSingleUser";
+import useGitProfileData from "../../../hooks/useGitProfileData";
 
 const ProfileHeader = () => {
-  const [data, setUserData] = useState();
   const { usernames } = useParams();
-
+  const [gitProfileData, error, isError] = useGitProfileData();
   const [singleUser] = useSingleUser(usernames);
-  // const singleUser = [];
-
-  // console.log(singleUser);
-
-  // useEffect(() => {
-  //   // fetch user data
-  //   axios
-  //     .get(
-  //       `https://api.github.com/users/${singleUser?.username}?clientId=${
-  //         import.meta.env.VITE_clientID
-  //       }&clientSecret=${import.meta.env.VITE_clientSecret}`,
-  //       {
-  //         auth: import.meta.env.VITE_GITHUB_USERNAME,
-  //         password: import.meta.env.VITE_GITHUB_OLD_TOKEN,
-  //       }
-  //     )
-  //     .then((response) => {
-  //       setUserData(response.data);
-  //     });
-  // }, [singleUser?.username]);
 
   return (
     <>
@@ -51,7 +28,7 @@ const ProfileHeader = () => {
             </Link>
             <div className="row padding-tb m_dec-top align-items-center d-flex">
               <div className="col-lg-6">
-                <div className="header-left">
+                <div className="header-left w-100">
                   {singleUser?.photoUrl ? (
                     <div className="header-thumbnail">
                       <img alt={singleUser?.name} src={singleUser?.photoUrl} />
@@ -62,7 +39,7 @@ const ProfileHeader = () => {
                     </div>
                   )}
 
-                  <div className="header-info-content lg:w-50 w-full">
+                  <div className="header-info-content">
                     {singleUser?.name ? (
                       <h4 className="title">
                         {singleUser?.name}
@@ -75,7 +52,7 @@ const ProfileHeader = () => {
                         </span>
                       </h4>
                     )}
-                    {singleUser?.address ? (
+                    {singleUser ? (
                       <div className="status-info mb-5">
                         <span className="me-3">
                           <FaMapMarkerAlt />
@@ -91,8 +68,6 @@ const ProfileHeader = () => {
                       </div>
                     )}
 
-                    {/* <div className="status-info mb-3 px-5">{data?.bio}</div> */}
-
                     {/* <!-- end --> */}
                   </div>
                 </div>
@@ -104,12 +79,12 @@ const ProfileHeader = () => {
                     <div className="inner slide">
                       <div
                         className={`d-flex gap-3 justify-content-left ${
-                          data && "flex-wrap"
+                          gitProfileData && "flex-wrap"
                         }  placeholder-glow w-100`}
                       >
-                        {data ? (
+                        {gitProfileData ? (
                           <span className="badge bg-success mt-3">
-                            Followers: {data?.followers}
+                            Followers: {gitProfileData?.followers}
                           </span>
                         ) : (
                           <span className="badge bg-success mt-3 placeholder placeholder-lg w-25">
@@ -117,9 +92,9 @@ const ProfileHeader = () => {
                           </span>
                         )}
 
-                        {data ? (
+                        {gitProfileData ? (
                           <span className="badge bg-warning mt-3">
-                            Following: {data?.following}
+                            Following: {gitProfileData?.following}
                           </span>
                         ) : (
                           <span className="badge bg-warning mt-3 placeholder placeholder-lg w-25">
@@ -127,9 +102,9 @@ const ProfileHeader = () => {
                           </span>
                         )}
 
-                        {data ? (
+                        {gitProfileData ? (
                           <span className="badge bg-primary mt-3">
-                            Public Repos: {data?.public_repos}
+                            Public Repos: {gitProfileData?.public_repos}
                           </span>
                         ) : (
                           <span className="badge bg-primary mt-3 placeholder placeholder-lg w-25">
@@ -137,9 +112,9 @@ const ProfileHeader = () => {
                           </span>
                         )}
 
-                        {data ? (
+                        {gitProfileData ? (
                           <span className="badge bg-info mt-3">
-                            Public Gists: {data?.public_gists}
+                            Public Gists: {gitProfileData?.public_gists}
                           </span>
                         ) : (
                           <span className="badge bg-info mt-3 placeholder placeholder-lg w-25">
@@ -148,9 +123,12 @@ const ProfileHeader = () => {
                         )}
                       </div>
                       <div className="skill-share-inner ">
-                        <ul className="text-left content mt-4 mb-2 p-0 placeholder-glow w-100">
-                          {data ? (
-                            <li>Company: {data?.company}</li>
+                        <div className="status-info mb-3 px-5 mt-5">
+                          {singleUser?.bio}
+                        </div>
+                        {/* <ul className="text-left content mt-4 mb-2 p-0 placeholder-glow w-100">
+                          {gitProfileData ? (
+                            <li>Company: {gitProfileData?.company}</li>
                           ) : (
                             <li>
                               Company:
@@ -160,14 +138,14 @@ const ProfileHeader = () => {
                             </li>
                           )}
 
-                          {data ? (
+                          {gitProfileData ? (
                             <li>
                               Twitter:
                               <a
                                 className="text-decoration-none color-dark "
-                                href={`http://www.twitter.com/${data?.twitter_username}`}
+                                href={`http://www.twitter.com/${gitProfileData?.twitter_username}`}
                               >
-                                {data?.twitter_username}
+                                {gitProfileData?.twitter_username}
                               </a>
                             </li>
                           ) : (
@@ -179,14 +157,14 @@ const ProfileHeader = () => {
                             </li>
                           )}
 
-                          {data ? (
+                          {gitProfileData ? (
                             <li>
                               Website:
                               <a
                                 className="text-decoration-none color-dark"
-                                href={`http://${data?.blog}`}
+                                href={`http://${gitProfileData?.blog}`}
                               >
-                                {data?.blog}
+                                {gitProfileData?.blog}
                               </a>
                             </li>
                           ) : (
@@ -197,7 +175,7 @@ const ProfileHeader = () => {
                               </span>
                             </li>
                           )}
-                        </ul>
+                        </ul> */}
                       </div>
                     </div>
                   </div>
