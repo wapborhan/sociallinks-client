@@ -1,12 +1,12 @@
 /* eslint-disable react/prop-types */
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { Link, NavLink, useParams } from "react-router-dom";
-import useSingleUser from "../../../hooks/useSingleUser";
-import useGitProfileData from "../../../hooks/useGitProfileData";
+import useGitProfileData from "../../hooks/useGitProfileData";
+import useSingleUser from "../../hooks/useSingleUser";
 
 const ProfileHeader = () => {
   const { usernames } = useParams();
-  const [gitProfileData, error, isError] = useGitProfileData(usernames);
+  const [gitProfileData] = useGitProfileData(usernames);
   const [singleUser] = useSingleUser(usernames);
 
   return (

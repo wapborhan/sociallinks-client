@@ -3,9 +3,10 @@ import Root from "../layout/Root";
 import ProfileLayout from "../layout/ProfileLayout";
 import HomePage from "../pages/home/HomePage";
 import Profile from "../pages/profile/Profile";
-import Repositories from "../pages/repo/Repositories";
 import UpdateProfile from "../pages/profile/update/UpdateProfile";
 import Ranks from "../pages/ranks/Ranks";
+import LikedProfile from "../pages/liked-profile/LikedProfile";
+import Repositories from "../pages/profile/repo/Repositories";
 
 export const router = createBrowserRouter([
   {
@@ -26,7 +27,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "liked-profile",
-        element: <Ranks />,
+        element: <LikedProfile />,
       },
       {
         path: "update-profile/:usernames",

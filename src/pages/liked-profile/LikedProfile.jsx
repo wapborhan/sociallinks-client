@@ -1,17 +1,11 @@
-/* eslint-disable react/prop-types */
-import RepoList from "./RepoList";
-import PlaceHolderCard from "../../components/PlaceHolderCard";
-import useGitRepoData from "../../hooks/useGitRepoData";
-import { useParams } from "react-router-dom";
+import useAllUsers from "../../hooks/useAllUsers";
+import LikedList from "./LikedList";
 
-const Repositories = () => {
-  const { usernames } = useParams();
-  const [gitRepoData, error, isError] = useGitRepoData(usernames);
-
-  console.log(error, isError);
+const LikedProfile = () => {
+  const [allUsers] = useAllUsers();
 
   return (
-    <div className="sr-content pt--30">
+    <div className="sr-content pt--30 mt--80">
       <div className="container">
         <div className="sect-main">
           {/* <!-- Start Portfolio Area --> */}
@@ -29,7 +23,7 @@ const Repositories = () => {
                     <span className="subtitle">
                       Visit portfolio and keep your feedback
                     </span>
-                    <h2 className="title"> Repositories</h2>
+                    <h2 className="title"> Liked Profile</h2>
                   </div>
                 </div>
               </div>
@@ -37,31 +31,25 @@ const Repositories = () => {
                 <div className="col-md-8">
                   <div className="catt-title">
                     <h3>
-                      Some <span className="txt-success">Projects</span>{" "}
+                      Some <span className="txt-success">Account</span>{" "}
                       {"I've "}
-                      Build On
+                      Liked
                     </h3>
                     <div className="text-right">
                       <a className="rn-btn btn-brd mr--30">
-                        <span>Github</span>
+                        <span>05</span>
                       </a>
                     </div>
                   </div>
                 </div>
               </div>
               <div className="row row--25 mt--10 mt_md--10 mt_sm--10">
-                {isError ? (
-                  <div>Error: API rate limit exceeded.</div>
-                ) : gitRepoData.length > 0 ? (
-                  gitRepoData.map((repo) => (
-                    <RepoList repos={repo} key={repo.id} />
+                {allUsers.length > 0 ? (
+                  allUsers.map((user, idx) => (
+                    <LikedList key={idx} user={user} />
                   ))
                 ) : (
-                  <>
-                    <PlaceHolderCard />
-                    <PlaceHolderCard />
-                    <PlaceHolderCard />
-                  </>
+                  <div className="text-center mt-5">No User Found!</div>
                 )}
               </div>
             </div>
@@ -72,4 +60,4 @@ const Repositories = () => {
   );
 };
 
-export default Repositories;
+export default LikedProfile;
