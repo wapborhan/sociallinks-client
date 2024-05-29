@@ -1,8 +1,6 @@
-/* eslint-disable no-unused-vars */
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
-import { AuthContex } from "../../provider/AuthProvider";
 import Linkcard from "./Linkcard";
 import LinkHead from "../../components/LinkHead";
 import useLinkscardData from "../../hooks/useLinkscardData";
@@ -12,8 +10,6 @@ const LinkList = () => {
   const [filteredLinkCards, setFilteredLinkCards] = useState([]);
   const { linkCards, categories } = useLinkscardData();
   const { usernames } = useParams();
-  const { user } = useContext(AuthContex);
-  // const [singleUser, refetch] = useSingleUser(user?.reloadUserInfo?.screenName);
   const [singleUser] = useSingleUser(usernames);
 
   useEffect(() => {
@@ -44,7 +40,7 @@ const LinkList = () => {
                       link={singleUser.links}
                     />
                   ))
-                : ""}
+                : "No Links Available"}
             </div>
           </div>
         );

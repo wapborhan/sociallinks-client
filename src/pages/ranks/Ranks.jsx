@@ -23,9 +23,11 @@ const Ranks = () => {
                   </div>
                 </div>
               </div>
-              {allUsers.map((user, idx) => (
-                <RankList key={idx} user={user} />
-              ))}
+              {allUsers.length > 0 ? (
+                allUsers.map((user, idx) => <RankList key={idx} user={user} />)
+              ) : (
+                <div className="text-center mt-5">No User Found!</div>
+              )}
             </div>
           </div>
         </div>

@@ -69,7 +69,7 @@ const Banner = () => {
         <div className="slide slider-style-4 bg_image bg_image--1 ">
           <div className="container">
             <div className="row">
-              <div className="order-2 order-lg-1 col-lg-9 col-xl-7 mt--35">
+              <div className="order-1 order-lg-2 col-lg-9 col-xl-7 mt--35">
                 <div className="content">
                   <div className="inner mb_sm--80">
                     <h1 className="title">
@@ -106,6 +106,14 @@ const Banner = () => {
                     </div>
                   </div>
                 </div>
+              </div>
+              <div className="col-lg-5 order-2">
+                <div className="imagebanner">
+                  <img src={user && user?.photoURL} alt="" />
+                </div>
+                <div className="bg-color1"></div>
+                <div className="bg-color2"></div>
+                <div className="bg-color3"></div>
               </div>
             </div>
           </div>
