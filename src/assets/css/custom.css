@@ -395,3 +395,11 @@ a {
   display: flex;
   justify-content: end;
 }
+
+.liked-profile .experience-left {
+  flex-basis: 90%;
+}
+
+.liked-profile .experience-right {
+  flex-basis: 10%;
+}
