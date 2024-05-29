@@ -71,7 +71,7 @@ const UpdateProfile = () => {
   };
 
   return (
-    <div className="sr-content pt--30 mt--100">
+    <div className="sr-content pt--30 mt--80 mb--40">
       <div className="container">
         <div className="sect-main">
           {/* <!-- Start Portfolio Area --> */}

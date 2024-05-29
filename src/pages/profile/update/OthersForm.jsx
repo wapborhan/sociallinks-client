@@ -14,7 +14,7 @@ const OthersForm = ({ register, singleUser }) => {
               className="form-control form-control-lg"
               name="github"
               type="text"
-              defaultValue={singleUser && singleUser?.links?.bio}
+              defaultValue={singleUser && singleUser?.bio}
               placeholder="Bio"
               {...register("bio")}
             />
@@ -32,7 +32,7 @@ const OthersForm = ({ register, singleUser }) => {
               className="form-control form-control-lg"
               name="github"
               type="text"
-              defaultValue={singleUser && singleUser?.links?.address}
+              defaultValue={singleUser && singleUser?.address}
               placeholder="Address"
               {...register("address")}
             />

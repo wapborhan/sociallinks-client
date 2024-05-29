@@ -7,6 +7,7 @@ import UpdateProfile from "../pages/profile/update/UpdateProfile";
 import Ranks from "../pages/ranks/Ranks";
 import LikedProfile from "../pages/liked-profile/LikedProfile";
 import Repositories from "../pages/profile/repo/Repositories";
+import About from "../pages/about/About";
 
 export const router = createBrowserRouter([
   {
@@ -19,7 +20,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "about",
-        element: <Ranks />,
+        element: <About />,
       },
       {
         path: "ranks",
