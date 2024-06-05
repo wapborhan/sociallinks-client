@@ -1,9 +1,10 @@
 import useAllUsers from "../../hooks/useAllUsers";
+import useMetaData from "../../hooks/useMetaData";
 import RankList from "./RankList";
 
 const Ranks = () => {
   const [allUsers] = useAllUsers();
-
+  useMetaData("Ranks");
   console.log(allUsers);
 
   return (

@@ -27,11 +27,11 @@ export const router = createBrowserRouter([
         element: <Ranks />,
       },
       {
-        path: "liked-profile",
+        path: "profile/liked",
         element: <LikedProfile />,
       },
       {
-        path: "update-profile/:usernames",
+        path: "profile/update/:usernames",
         exact: true,
         element: <UpdateProfile />,
       },

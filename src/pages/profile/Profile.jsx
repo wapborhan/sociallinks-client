@@ -1,7 +1,9 @@
 import { Toaster } from "react-hot-toast";
 import LinkList from "./LinkList";
+import useMetaData from "../../hooks/useMetaData";
 
 const Profile = () => {
+  useMetaData("Profile");
   return (
     <div className="sr-content pt--30">
       <Toaster position="top-center" reverseOrder={false} />

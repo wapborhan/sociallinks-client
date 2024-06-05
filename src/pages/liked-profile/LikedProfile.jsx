@@ -1,8 +1,10 @@
 import useAllUsers from "../../hooks/useAllUsers";
+import useMetaData from "../../hooks/useMetaData";
 import LikedList from "./LikedList";
 
 const LikedProfile = () => {
   const [allUsers] = useAllUsers();
+  useMetaData("Liked Profile");
 
   return (
     <div className="sr-content pt--30 mt--80">

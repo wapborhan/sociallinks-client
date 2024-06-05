@@ -12,12 +12,14 @@ import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import OthersForm from "./OthersForm";
+import useMetaData from "../../../hooks/useMetaData";
 
 const UpdateProfile = () => {
   const { user } = useContext(AuthContex);
   const [singleUser] = useSingleUser(user?.reloadUserInfo?.screenName);
   const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
+  useMetaData("Update Prodile");
 
   const {
     register,

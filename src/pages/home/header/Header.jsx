@@ -42,7 +42,7 @@ const Header = () => {
                 <li className="nav-item">
                   <Link
                     className="nav-link smoth-animation"
-                    to="/liked-profile"
+                    to="/profile/liked"
                   >
                     Liked Profiles
                   </Link>
@@ -50,7 +50,7 @@ const Header = () => {
                 <li className="nav-item">
                   <Link
                     className="nav-link smoth-animation"
-                    to={`/update-profile/${user?.reloadUserInfo?.screenName}`}
+                    to={`/profile/update/${user?.reloadUserInfo?.screenName}`}
                   >
                     Update Profiles
                   </Link>

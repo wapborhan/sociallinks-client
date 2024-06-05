@@ -1,4 +1,7 @@
+import useMetaData from "../../hooks/useMetaData";
+
 const About = () => {
+  useMetaData("About");
   return (
     <div className="sr-content pt--30 mt--80">
       <div className="container">
