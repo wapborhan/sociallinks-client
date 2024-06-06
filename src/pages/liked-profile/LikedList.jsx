@@ -1,13 +1,6 @@
-import { useState } from "react";
-import { FaHeart, FaRegHeart } from "react-icons/fa";
-
 const LikedList = ({ user }) => {
-  const [heart, setHeart] = useState(false);
   const { name, photoUrl } = user;
 
-  const toggleHeart = () => {
-    setHeart(!heart);
-  };
   return (
     <div
       // key={repo.id}
@@ -30,14 +23,7 @@ const LikedList = ({ user }) => {
             <h4 className="experience-title">{name}</h4>
           </div>
         </div>
-        <div className="experience-right">
-          <div
-            className="experience-footer p-3 cursor-pointer"
-            onClick={toggleHeart}
-          >
-            {heart ? <FaRegHeart /> : <FaHeart color="#f9004d" />}
-          </div>
-        </div>
+        <div className="experience-right"></div>
       </div>
     </div>
   );

@@ -1,13 +1,18 @@
-/* eslint-disable react/prop-types */
-import { FaMapMarkerAlt } from "react-icons/fa";
+import { useState } from "react";
+import { FaMapMarkerAlt, FaHeart, FaRegHeart } from "react-icons/fa";
 import { Link, NavLink, useParams } from "react-router-dom";
 import useGitProfileData from "../../hooks/useGitProfileData";
 import useSingleUser from "../../hooks/useSingleUser";
 
 const ProfileHeader = () => {
   const { usernames } = useParams();
+  const [heart, setHeart] = useState(false);
   const [gitProfileData] = useGitProfileData(usernames);
   const [singleUser] = useSingleUser(usernames);
+
+  const toggleHeart = () => {
+    setHeart(!heart);
+  };
 
   return (
     <>
@@ -176,6 +181,12 @@ const ProfileHeader = () => {
                             </li>
                           )}
                         </ul> */}
+                      </div>
+                      <div
+                        className="experience-footer p-3 cursor-pointer"
+                        onClick={toggleHeart}
+                      >
+                        {heart ? <FaRegHeart /> : <FaHeart color="#f9004d" />}
                       </div>
                     </div>
                   </div>

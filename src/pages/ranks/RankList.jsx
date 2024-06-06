@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 
 const RankList = ({ user }) => {
-  const { name, photoUrl, bio, username, address } = user;
+  const { name, photoUrl, username, recvLikes } = user;
+
+  console.log(user);
 
   return (
     <div className="experience-style-two aos-init aos-animate">
@@ -19,8 +21,6 @@ const RankList = ({ user }) => {
         </div>
         <div className="experience-center gap-2 d-flex  flex-column">
           <h4 className="experience-title">{name}</h4>
-          {/* <h6 className="subtitle">{bio}</h6> */}
-          {/* <h6 className="subtitle">{address}</h6> */}
         </div>
       </div>
       <div className="experience-right">
@@ -28,7 +28,7 @@ const RankList = ({ user }) => {
           <div className="my-3">
             {/* <span>Views: 24</span> */}
             {/* {" - "} */}
-            <span>Likes: 8</span>
+            <span>Likes: {recvLikes.length}</span>
           </div>
           <Link className="rn-btn" to={`/profile/${username}`}>
             <span>View Profile</span>

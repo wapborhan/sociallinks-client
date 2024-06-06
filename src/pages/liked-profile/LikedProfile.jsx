@@ -1,10 +1,44 @@
-import useAllUsers from "../../hooks/useAllUsers";
+import { useQuery } from "@tanstack/react-query";
 import useMetaData from "../../hooks/useMetaData";
 import LikedList from "./LikedList";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import { useContext, useEffect, useState } from "react";
+import { AuthContex } from "../../provider/AuthProvider";
 
 const LikedProfile = () => {
-  const [allUsers] = useAllUsers();
   useMetaData("Liked Profile");
+  const [likedUserData, setLikedUserData] = useState([]);
+  const axiosPublic = useAxiosPublic();
+  const { user } = useContext(AuthContex);
+
+  const { data: likedUser = [] } = useQuery({
+    queryKey: ["likedUser"],
+    enabled: !!user,
+    queryFn: async () => {
+      const res = await axiosPublic.get(
+        `/liked/${user?.reloadUserInfo?.screenName}`
+      );
+      return res.data;
+    },
+  });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const results = await Promise.all(
+          likedUser.map(async (user) => {
+            const res = await axiosPublic.get(`/user/${user}`);
+            return res.data;
+          })
+        );
+        setLikedUserData(results);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+
+    fetchData();
+  }, [likedUser, axiosPublic]);
 
   return (
     <div className="sr-content pt--30 mt--80">
@@ -15,13 +49,7 @@ const LikedProfile = () => {
             <div className="container">
               <div className="row">
                 <div className="col-lg-12">
-                  <div
-                    data-aos="fade-up"
-                    data-aos-duration="500"
-                    data-aos-delay="100"
-                    data-aos-once="true"
-                    className="section-title text-center"
-                  >
+                  <div className="section-title text-center">
                     <span className="subtitle">
                       Visit portfolio and keep your feedback
                     </span>
@@ -39,15 +67,17 @@ const LikedProfile = () => {
                     </h3>
                     <div className="text-right">
                       <a className="rn-btn btn-brd mr--30">
-                        <span>05</span>
+                        <span>
+                          {likedUser.length.toString().padStart(2, "0")}
+                        </span>
                       </a>
                     </div>
                   </div>
                 </div>
               </div>
               <div className="row row--25 mt--10 mt_md--10 mt_sm--10">
-                {allUsers.length > 0 ? (
-                  allUsers.map((user, idx) => (
+                {likedUserData.length > 0 ? (
+                  likedUserData.map((user, idx) => (
                     <LikedList key={idx} user={user} />
                   ))
                 ) : (

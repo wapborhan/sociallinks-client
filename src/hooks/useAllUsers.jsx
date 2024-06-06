@@ -7,7 +7,11 @@ const useAllUsers = () => {
   const axiosPublic = useAxiosPublic();
   const { user } = useContext(AuthContex);
 
-  const { data: allUsers = [] } = useQuery({
+  const {
+    data: allUsers = [],
+    isLoading,
+    isPending,
+  } = useQuery({
     queryKey: ["allUsers"],
     enabled: !!user,
     queryFn: async () => {
@@ -16,7 +20,7 @@ const useAllUsers = () => {
     },
   });
 
-  return [allUsers];
+  return [allUsers, isLoading, isPending];
 };
 
 export default useAllUsers;

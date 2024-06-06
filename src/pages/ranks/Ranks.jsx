@@ -3,9 +3,8 @@ import useMetaData from "../../hooks/useMetaData";
 import RankList from "./RankList";
 
 const Ranks = () => {
-  const [allUsers] = useAllUsers();
   useMetaData("Ranks");
-  console.log(allUsers);
+  const [allUsers, isPending] = useAllUsers();
 
   return (
     <div className="sr-content pt--30 mt--80">
@@ -24,7 +23,9 @@ const Ranks = () => {
                   </div>
                 </div>
               </div>
-              {allUsers.length > 0 ? (
+              {isPending ? (
+                "Loading..."
+              ) : allUsers.length > 0 ? (
                 allUsers.map((user, idx) => <RankList key={idx} user={user} />)
               ) : (
                 <div className="text-center mt-5">No User Found!</div>

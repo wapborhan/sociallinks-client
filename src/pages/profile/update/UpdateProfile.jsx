@@ -19,7 +19,7 @@ const UpdateProfile = () => {
   const [singleUser] = useSingleUser(user?.reloadUserInfo?.screenName);
   const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
-  useMetaData("Update Prodile");
+  useMetaData("Update Profile");
 
   const {
     register,

@@ -27,6 +27,8 @@ const Banner = () => {
               links: {
                 github: data?.screenName,
               },
+              giveLikes: [],
+              recvLikes: [],
             },
             {
               headers: {

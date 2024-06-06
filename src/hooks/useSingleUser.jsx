@@ -7,7 +7,11 @@ const useSingleUser = (username) => {
   const axiosPublic = useAxiosPublic();
   const { user } = useContext(AuthContex);
 
-  const { data: singleUser = [], refetch } = useQuery({
+  const {
+    data: singleUser = [],
+    refetch,
+    isLoading,
+  } = useQuery({
     queryKey: ["singleUser"],
     enabled: !!user,
     queryFn: async () => {
@@ -15,7 +19,7 @@ const useSingleUser = (username) => {
       return res.data;
     },
   });
-  return [singleUser, refetch];
+  return [singleUser, refetch, isLoading];
 };
 
 export default useSingleUser;
