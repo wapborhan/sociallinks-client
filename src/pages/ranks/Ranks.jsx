@@ -6,6 +6,8 @@ const Ranks = () => {
   useMetaData("Ranks");
   const [allUsers, isPending] = useAllUsers();
 
+  console.log(allUsers?.profileViews);
+
   return (
     <div className="sr-content pt--30 mt--80">
       <div className="container">

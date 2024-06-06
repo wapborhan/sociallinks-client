@@ -1,18 +1,33 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaMapMarkerAlt, FaHeart, FaRegHeart } from "react-icons/fa";
 import { Link, NavLink, useParams } from "react-router-dom";
 import useGitProfileData from "../../hooks/useGitProfileData";
 import useSingleUser from "../../hooks/useSingleUser";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const ProfileHeader = () => {
   const { usernames } = useParams();
   const [heart, setHeart] = useState(false);
   const [gitProfileData] = useGitProfileData(usernames);
   const [singleUser] = useSingleUser(usernames);
+  const axiosPublic = useAxiosPublic();
 
   const toggleHeart = () => {
     setHeart(!heart);
   };
+
+  useEffect(() => {
+    if (usernames) {
+      const recordView = async () => {
+        try {
+          await axiosPublic.post(`/views/${usernames}`);
+        } catch (error) {
+          console.error("Error recording view:", error);
+        }
+      };
+      recordView();
+    }
+  }, [usernames, axiosPublic]);
 
   return (
     <>
@@ -78,9 +93,9 @@ const ProfileHeader = () => {
                 </div>
               </div>
               <div className="col-lg-6">
-                <div className="header-right">
+                <div className="header-right justify-content-between px-2">
                   {/* <!-- Start skiull area --> */}
-                  <div className="skill-area section-height skill-main w-100">
+                  <div className="skill-area section-height skill-main">
                     <div className="inner slide">
                       <div
                         className={`d-flex gap-3 justify-content-left ${
@@ -182,15 +197,15 @@ const ProfileHeader = () => {
                           )}
                         </ul> */}
                       </div>
-                      <div
-                        className="experience-footer p-3 cursor-pointer"
-                        onClick={toggleHeart}
-                      >
-                        {heart ? <FaRegHeart /> : <FaHeart color="#f9004d" />}
-                      </div>
                     </div>
                   </div>
                   {/* <!-- End skiull area -->/ */}
+                  <div
+                    className="experience-footer p-3 cursor-pointer"
+                    onClick={toggleHeart}
+                  >
+                    {heart ? <FaRegHeart /> : <FaHeart color="#f9004d" />}
+                  </div>
                 </div>
               </div>
               <div className="col-md-12">

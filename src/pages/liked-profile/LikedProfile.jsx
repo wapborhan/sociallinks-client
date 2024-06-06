@@ -8,21 +8,37 @@ import { AuthContex } from "../../provider/AuthProvider";
 const LikedProfile = () => {
   useMetaData("Liked Profile");
   const [likedUserData, setLikedUserData] = useState([]);
+  const [likedUser, setLikedUser] = useState([]);
   const axiosPublic = useAxiosPublic();
   const { user } = useContext(AuthContex);
 
-  const { data: likedUser = [] } = useQuery({
-    queryKey: ["likedUser"],
-    enabled: !!user,
-    queryFn: async () => {
-      const res = await axiosPublic.get(
-        `/liked/${user?.reloadUserInfo?.screenName}`
-      );
-      return res.data;
-    },
-  });
+  // const { data: likedUser = [] } = useQuery({
+  //   queryKey: ["likedUser"],
+  //   enabled: !!user,
+  //   queryFn: async () => {
+  //     const res = await axiosPublic.get(
+  //       `/liked/${user?.reloadUserInfo?.screenName}`
+  //     );
+  //     return res.data;
+  //   },
+  // });
 
   useEffect(() => {
+    if (user) {
+      const fetchLikedUser = async () => {
+        try {
+          const res = await axiosPublic.get(
+            `/liked/${user?.reloadUserInfo?.screenName}`
+          );
+          setLikedUser(res.data);
+        } catch (error) {
+          console.error("Error fetching liked users:", error);
+        }
+      };
+
+      fetchLikedUser();
+    }
+
     const fetchData = async () => {
       try {
         const results = await Promise.all(
@@ -38,7 +54,7 @@ const LikedProfile = () => {
     };
 
     fetchData();
-  }, [likedUser, axiosPublic]);
+  }, [likedUser, axiosPublic, user]);
 
   return (
     <div className="sr-content pt--30 mt--80">
