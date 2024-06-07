@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const RankList = ({ user }) => {
-  const { name, photoUrl, username, recvLikes } = user;
+  const { name, photoUrl, username, recvLikes, profileViews } = user;
 
   console.log(user);
 
@@ -26,8 +26,8 @@ const RankList = ({ user }) => {
       <div className="experience-right">
         <div className="experience-footer d-flex gap-5">
           <div className="my-3">
-            {/* <span>Views: 24</span> */}
-            {/* {" - "} */}
+            <span>Views: {profileViews.length}</span>
+            {" - "}
             <span>Likes: {recvLikes.length}</span>
           </div>
           <Link className="rn-btn" to={`/profile/${username}`}>

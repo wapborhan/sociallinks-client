@@ -1,4 +1,3 @@
-import { useQuery } from "@tanstack/react-query";
 import useMetaData from "../../hooks/useMetaData";
 import LikedList from "./LikedList";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
@@ -11,17 +10,6 @@ const LikedProfile = () => {
   const [likedUser, setLikedUser] = useState([]);
   const axiosPublic = useAxiosPublic();
   const { user } = useContext(AuthContex);
-
-  // const { data: likedUser = [] } = useQuery({
-  //   queryKey: ["likedUser"],
-  //   enabled: !!user,
-  //   queryFn: async () => {
-  //     const res = await axiosPublic.get(
-  //       `/liked/${user?.reloadUserInfo?.screenName}`
-  //     );
-  //     return res.data;
-  //   },
-  // });
 
   useEffect(() => {
     if (user) {

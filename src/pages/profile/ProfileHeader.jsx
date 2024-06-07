@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaMapMarkerAlt, FaHeart, FaRegHeart } from "react-icons/fa";
 import { Link, NavLink, useParams } from "react-router-dom";
 import useGitProfileData from "../../hooks/useGitProfileData";
 import useSingleUser from "../../hooks/useSingleUser";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import { AuthContex } from "../../provider/AuthProvider";
 
 const ProfileHeader = () => {
   const { usernames } = useParams();
@@ -11,23 +12,28 @@ const ProfileHeader = () => {
   const [gitProfileData] = useGitProfileData(usernames);
   const [singleUser] = useSingleUser(usernames);
   const axiosPublic = useAxiosPublic();
+  const { user } = useContext(AuthContex);
+
+  console.log(user?.reloadUserInfo?.screenName);
 
   const toggleHeart = () => {
     setHeart(!heart);
   };
 
   useEffect(() => {
-    if (usernames) {
+    if (user) {
       const recordView = async () => {
         try {
-          await axiosPublic.post(`/views/${usernames}`);
+          await axiosPublic.post(`/views/${usernames}`, {
+            viewer: user?.reloadUserInfo?.screenName,
+          });
         } catch (error) {
           console.error("Error recording view:", error);
         }
       };
       recordView();
     }
-  }, [usernames, axiosPublic]);
+  }, [user, axiosPublic, usernames]);
 
   return (
     <>
