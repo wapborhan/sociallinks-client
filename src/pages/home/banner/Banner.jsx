@@ -4,8 +4,10 @@ import toast from "react-hot-toast";
 import Loading from "../../../components/Loading";
 import UserBanner from "./UserBanner";
 import DefaultBanner from "./DefaultBanner";
+import useMetaData from "../../../hooks/useMetaData";
 
 const Banner = () => {
+  useMetaData("Home");
   const { user, logOut, loading } = useContext(AuthContex);
 
   const signOutOnGithub = () => {

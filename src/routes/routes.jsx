@@ -1,13 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
 import Root from "../layout/Root";
 import ProfileLayout from "../layout/ProfileLayout";
-import HomePage from "../pages/home/HomePage";
 import Profile from "../pages/profile/Profile";
 import UpdateProfile from "../pages/profile/update/UpdateProfile";
 import Ranks from "../pages/ranks/Ranks";
 import LikedProfile from "../pages/liked-profile/LikedProfile";
 import Repositories from "../pages/profile/repo/Repositories";
 import About from "../pages/about/About";
+import Banner from "../pages/home/banner/Banner";
 
 export const router = createBrowserRouter([
   {
@@ -16,7 +16,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <HomePage />,
+        element: <Banner />,
       },
       {
         path: "about",

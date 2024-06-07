@@ -1,10 +1,28 @@
-import useAllUsers from "../../hooks/useAllUsers";
+import { useContext, useEffect, useState } from "react";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 import useMetaData from "../../hooks/useMetaData";
 import RankList from "./RankList";
+import { AuthContex } from "../../provider/AuthProvider";
 
 const Ranks = () => {
   useMetaData("Ranks");
-  const [allUsers, isPending] = useAllUsers();
+  const { loading } = useContext(AuthContex);
+  const axiosPublic = useAxiosPublic();
+  const [rankUsers, setRankUser] = useState();
+
+  console.log(rankUsers);
+
+  useEffect(() => {
+    const fetchRanker = async () => {
+      try {
+        const res = await axiosPublic.get(`ranks`);
+        setRankUser(res.data);
+      } catch (error) {
+        console.error("Error fetching liked users:", error);
+      }
+    };
+    fetchRanker();
+  }, [axiosPublic]);
 
   return (
     <div className="sr-content pt--30 mt--80">
@@ -23,10 +41,10 @@ const Ranks = () => {
                   </div>
                 </div>
               </div>
-              {isPending ? (
+              {loading ? (
                 "Loading..."
-              ) : allUsers.length > 0 ? (
-                allUsers.map((user, idx) => <RankList key={idx} user={user} />)
+              ) : rankUsers ? (
+                rankUsers.map((user, idx) => <RankList key={idx} user={user} />)
               ) : (
                 <div className="text-center mt-5">No User Found!</div>
               )}

@@ -39,30 +39,35 @@ const Header = () => {
                     Rank
                   </Link>
                 </li>
-                <li className="nav-item">
-                  <Link
-                    className="nav-link smoth-animation"
-                    to="/profile/liked"
-                  >
-                    Liked Profiles
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link
-                    className="nav-link smoth-animation"
-                    to={`/profile/update/${user?.reloadUserInfo?.screenName}`}
-                  >
-                    Update Profiles
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link
-                    className="nav-link smoth-animation"
-                    to={`/profile/${user?.reloadUserInfo?.screenName}`}
-                  >
-                    My Profile
-                  </Link>
-                </li>
+                {user && (
+                  <>
+                    {" "}
+                    <li className="nav-item">
+                      <Link
+                        className="nav-link smoth-animation"
+                        to="/profile/liked"
+                      >
+                        Liked Profiles
+                      </Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link
+                        className="nav-link smoth-animation"
+                        to={`/profile/update/${user?.reloadUserInfo?.screenName}`}
+                      >
+                        Update Profiles
+                      </Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link
+                        className="nav-link smoth-animation"
+                        to={`/profile/${user?.reloadUserInfo?.screenName}`}
+                      >
+                        My Profile
+                      </Link>
+                    </li>
+                  </>
+                )}
               </ul>
             </nav>
           </div>
