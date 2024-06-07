@@ -1,14 +1,11 @@
 import { createContext, useEffect, useState } from "react";
 import {
   GithubAuthProvider,
-  getRedirectResult,
   onAuthStateChanged,
   signInWithPopup,
-  signInWithRedirect,
   signOut,
 } from "firebase/auth";
 import { auth } from "./firebase.config.js";
-import { useNavigate, useNavigation } from "react-router-dom";
 
 // Create Contex Authentication
 export const AuthContex = createContext(null);
