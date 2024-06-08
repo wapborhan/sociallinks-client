@@ -1,10 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { useContext } from "react";
-import { AuthContex } from "../provider/AuthProvider";
+import useAuth from "./useAuth";
 
 const useGitProfileData = (username) => {
-  const { user } = useContext(AuthContex);
+  const { user } = useAuth();
 
   const {
     data: gitProfileData = [],

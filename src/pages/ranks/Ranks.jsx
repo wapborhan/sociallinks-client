@@ -1,12 +1,13 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import useMetaData from "../../hooks/useMetaData";
 import RankList from "./RankList";
-import { AuthContex } from "../../provider/AuthProvider";
+import Loading from "../../components/Loading";
+import useAuth from "../../hooks/useAuth";
 
 const Ranks = () => {
   useMetaData("Ranks");
-  const { loading } = useContext(AuthContex);
+  const { loading } = useAuth();
   const axiosPublic = useAxiosPublic();
   const [rankUsers, setRankUser] = useState();
 
@@ -42,7 +43,9 @@ const Ranks = () => {
                 </div>
               </div>
               {loading ? (
-                "Loading..."
+                <div className="d-flex justify-content-center align-items-center mt-5">
+                  <Loading />
+                </div>
               ) : rankUsers ? (
                 rankUsers.map((user, idx) => <RankList key={idx} user={user} />)
               ) : (

@@ -1,9 +1,8 @@
-import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { AuthContex } from "../../../provider/AuthProvider";
+import useAuth from "../../../hooks/useAuth";
 
 const Header = () => {
-  const { user } = useContext(AuthContex);
+  const { user } = useAuth();
 
   return (
     <header className="rn-header haeder-default black-logo-version header--fixed header--sticky">

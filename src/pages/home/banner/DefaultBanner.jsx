@@ -1,11 +1,10 @@
 import { Link, useNavigate } from "react-router-dom";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
-import { useContext } from "react";
-import { AuthContex } from "../../../provider/AuthProvider";
 import toast from "react-hot-toast";
+import useAuth from "../../../hooks/useAuth";
 
 const DefaultBanner = () => {
-  const { createUser } = useContext(AuthContex);
+  const { createUser } = useAuth();
   const navigate = useNavigate();
   const axiosPublic = useAxiosPublic();
 

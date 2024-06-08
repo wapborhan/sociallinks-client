@@ -1,10 +1,10 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FaMapMarkerAlt, FaHeart, FaRegHeart } from "react-icons/fa";
 import { Link, NavLink, useParams } from "react-router-dom";
 import useGitProfileData from "../../hooks/useGitProfileData";
 import useSingleUser from "../../hooks/useSingleUser";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
-import { AuthContex } from "../../provider/AuthProvider";
+import useAuth from "../../hooks/useAuth";
 
 const ProfileHeader = () => {
   const { usernames } = useParams();
@@ -12,7 +12,7 @@ const ProfileHeader = () => {
   const [gitProfileData] = useGitProfileData(usernames);
   const [singleUser] = useSingleUser(usernames);
   const axiosPublic = useAxiosPublic();
-  const { user } = useContext(AuthContex);
+  const { user } = useAuth();
 
   console.log(user?.reloadUserInfo?.screenName);
 

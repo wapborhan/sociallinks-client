@@ -1,21 +1,21 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { FaArrowRight } from "react-icons/fa6";
+import toast from "react-hot-toast";
+import useMetaData from "../../../hooks/useMetaData";
+import useAuth from "../../../hooks/useAuth";
+import useSingleUser from "../../../hooks/useSingleUser";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import CodingForm from "./CodingForm";
 import ProfForm from "./ProfForm";
 import SocialForm from "./SocialForm";
 import MessageForm from "./MessageForm";
 import PersonalForm from "./PersonalForm";
-import useSingleUser from "../../../hooks/useSingleUser";
-import { useContext, useEffect } from "react";
-import { AuthContex } from "../../../provider/AuthProvider";
-import useAxiosPublic from "../../../hooks/useAxiosPublic";
-import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
 import OthersForm from "./OthersForm";
-import useMetaData from "../../../hooks/useMetaData";
 
 const UpdateProfile = () => {
-  const { user } = useContext(AuthContex);
+  const { user } = useAuth();
   const [singleUser] = useSingleUser(user?.reloadUserInfo?.screenName);
   const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();

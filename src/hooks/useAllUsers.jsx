@@ -1,11 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "./useAxiosPublic";
-import { useContext } from "react";
-import { AuthContex } from "../provider/AuthProvider";
+import useAuth from "./useAuth";
 
 const useAllUsers = () => {
   const axiosPublic = useAxiosPublic();
-  const { user } = useContext(AuthContex);
+  const { user } = useAuth();
 
   const {
     data: allUsers = [],

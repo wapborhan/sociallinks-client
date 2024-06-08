@@ -1,14 +1,13 @@
-import { useContext } from "react";
-import { AuthContex } from "../../../provider/AuthProvider";
 import toast from "react-hot-toast";
 import Loading from "../../../components/Loading";
 import UserBanner from "./UserBanner";
 import DefaultBanner from "./DefaultBanner";
 import useMetaData from "../../../hooks/useMetaData";
+import useAuth from "../../../hooks/useAuth";
 
 const Banner = () => {
   useMetaData("Home");
-  const { user, logOut, loading } = useContext(AuthContex);
+  const { user, logOut, loading } = useAuth();
 
   const signOutOnGithub = () => {
     logOut();

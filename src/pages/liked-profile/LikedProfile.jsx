@@ -1,15 +1,15 @@
+import { useEffect, useState } from "react";
 import useMetaData from "../../hooks/useMetaData";
 import LikedList from "./LikedList";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
-import { useContext, useEffect, useState } from "react";
-import { AuthContex } from "../../provider/AuthProvider";
+import useAuth from "../../hooks/useAuth";
 
 const LikedProfile = () => {
   useMetaData("Liked Profile");
   const [likedUserData, setLikedUserData] = useState([]);
   const [likedUser, setLikedUser] = useState([]);
   const axiosPublic = useAxiosPublic();
-  const { user } = useContext(AuthContex);
+  const { user } = useAuth();
 
   useEffect(() => {
     if (user) {
