@@ -8,6 +8,7 @@ import LikedProfile from "../pages/liked-profile/LikedProfile";
 import Repositories from "../pages/profile/repo/Repositories";
 import About from "../pages/about/About";
 import Banner from "../pages/home/banner/Banner";
+import PrivateRoute from "../provider/PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -28,19 +29,31 @@ export const router = createBrowserRouter([
       },
       {
         path: "profile/liked",
-        element: <LikedProfile />,
+        element: (
+          <PrivateRoute>
+            <LikedProfile />
+          </PrivateRoute>
+        ),
       },
       {
         path: "profile/update/:usernames",
         exact: true,
-        element: <UpdateProfile />,
+        element: (
+          <PrivateRoute>
+            <UpdateProfile />
+          </PrivateRoute>
+        ),
       },
     ],
   },
   {
     path: "/profile",
     exact: true,
-    element: <ProfileLayout />,
+    element: (
+      <PrivateRoute>
+        <ProfileLayout />
+      </PrivateRoute>
+    ),
     children: [
       {
         path: ":usernames",

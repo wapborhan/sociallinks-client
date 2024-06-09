@@ -66,7 +66,7 @@ const DefaultBanner = () => {
         <div className="order-1 order-lg-2 col-lg-9 col-xl-7 mt--35">
           <div className="content">
             <div className="inner mb_sm--80">
-              <h1 className="title">Hi, Guest </h1>
+              <h1 className="title">Hi, Developer </h1>
               <div>
                 <p className="descriptions">
                   Share your social links and professional profiles with each
