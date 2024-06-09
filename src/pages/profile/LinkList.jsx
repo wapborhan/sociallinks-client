@@ -5,6 +5,7 @@ import Linkcard from "./Linkcard";
 import LinkHead from "../../components/LinkHead";
 import useLinkscardData from "../../hooks/useLinkscardData";
 import useSingleUser from "../../hooks/useSingleUser";
+import Loading from "../../components/Loading";
 
 const LinkList = () => {
   const [filteredLinkCards, setFilteredLinkCards] = useState([]);
@@ -30,17 +31,25 @@ const LinkList = () => {
         );
         return (
           <div key={index}>
-            {filteredLinks.length > 0 ? <LinkHead cattTitle={cat} /> : ""}
+            {singleUser && singleUser?.links ? (
+              <LinkHead cattTitle={cat} />
+            ) : (
+              ""
+            )}
             <div className="row row--25 mt--10 mt_md--10 mt_sm--10">
-              {filteredLinks.length > 0
-                ? filteredLinks.map((linkCard, idx) => (
-                    <Linkcard
-                      key={idx}
-                      linkCard={linkCard}
-                      link={singleUser.links}
-                    />
-                  ))
-                : "No Links Available"}
+              {singleUser?.links?.length < 0 ? (
+                <Loading />
+              ) : filteredLinks.length > 0 ? (
+                filteredLinks.map((linkCard, idx) => (
+                  <Linkcard
+                    key={idx}
+                    linkCard={linkCard}
+                    link={singleUser.links}
+                  />
+                ))
+              ) : (
+                "No Links Available"
+              )}
             </div>
           </div>
         );

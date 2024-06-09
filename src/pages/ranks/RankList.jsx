@@ -2,7 +2,7 @@ import { FaEye, FaThumbsUp } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
 const RankList = ({ user }) => {
-  const { name, photoUrl, username, recvLikes, profileViews } = user;
+  const { name, photoUrl, username, profileLikes, profileViews } = user;
 
   console.log(user);
 
@@ -40,7 +40,7 @@ const RankList = ({ user }) => {
               style={{ color: "#f9004d" }}
             >
               <FaThumbsUp />
-              <span className="text-black">{" " + recvLikes.length}</span>
+              <span className="text-black">{" " + profileLikes.length}</span>
             </div>
           </div>
           <Link className="rn-btn" to={`/profile/${username}`}>

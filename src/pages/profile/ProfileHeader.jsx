@@ -1,5 +1,12 @@
 import { useEffect, useState } from "react";
-import { FaMapMarkerAlt, FaHeart, FaRegHeart } from "react-icons/fa";
+import {
+  FaMapMarkerAlt,
+  FaHeart,
+  FaRegHeart,
+  FaEye,
+  FaThumbsUp,
+} from "react-icons/fa";
+
 import { Link, NavLink, useParams } from "react-router-dom";
 import useGitProfileData from "../../hooks/useGitProfileData";
 import useSingleUser from "../../hooks/useSingleUser";
@@ -14,7 +21,7 @@ const ProfileHeader = () => {
   const axiosPublic = useAxiosPublic();
   const { user } = useAuth();
 
-  console.log(user?.reloadUserInfo?.screenName);
+  console.log(singleUser);
 
   const toggleHeart = () => {
     setHeart(!heart);
@@ -79,7 +86,7 @@ const ProfileHeader = () => {
                       </h4>
                     )}
                     {singleUser ? (
-                      <div className="status-info mb-5">
+                      <div className="status-info mb-3">
                         <span className="me-3">
                           <FaMapMarkerAlt />
                         </span>
@@ -93,7 +100,23 @@ const ProfileHeader = () => {
                         <span className="placeholder rounded col-12 w-100"></span>
                       </div>
                     )}
-
+                    <div className="col-md-12 text-center d-flex gap-3 justify-content-start align-items-center">
+                      <FaEye />{" "}
+                      <span>
+                        Profile views:{" "}
+                        {user && singleUser?.profileViews?.length}
+                      </span>{" "}
+                      |{" "}
+                      <span>
+                        Likes: {user && singleUser?.profileLikes?.length}
+                      </span>{" "}
+                      <div
+                        className="experience-footer  cursor-pointer"
+                        onClick={toggleHeart}
+                      >
+                        {heart ? <FaRegHeart /> : <FaHeart color="#f9004d" />}
+                      </div>
+                    </div>
                     {/* <!-- end --> */}
                   </div>
                 </div>
@@ -206,14 +229,9 @@ const ProfileHeader = () => {
                     </div>
                   </div>
                   {/* <!-- End skiull area -->/ */}
-                  <div
-                    className="experience-footer p-3 cursor-pointer"
-                    onClick={toggleHeart}
-                  >
-                    {heart ? <FaRegHeart /> : <FaHeart color="#f9004d" />}
-                  </div>
                 </div>
               </div>
+
               <div className="col-md-12">
                 <div className="navs text-center d-flex justify-content-center">
                   <ul className="d-flex flex-wrap p-0">
