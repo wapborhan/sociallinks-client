@@ -6,7 +6,11 @@ const PrivateRoute = ({ children }) => {
   const { user, loading } = useAuth();
 
   if (loading) {
-    return <Loading />;
+    return (
+      <div className="vh-100 d-flex justify-content-center align-items-center">
+        <Loading />
+      </div>
+    );
   }
   if (user) {
     return children;

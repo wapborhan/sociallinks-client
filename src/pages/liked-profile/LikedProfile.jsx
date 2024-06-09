@@ -7,7 +7,6 @@ import useAuth from "../../hooks/useAuth";
 const LikedProfile = () => {
   useMetaData("Liked Profile");
   const [likedUserData, setLikedUserData] = useState([]);
-  const [likedUser, setLikedUser] = useState([]);
   const axiosPublic = useAxiosPublic();
   const { user } = useAuth();
 
@@ -18,7 +17,22 @@ const LikedProfile = () => {
           const res = await axiosPublic.get(
             `/liked/${user?.reloadUserInfo?.screenName}`
           );
-          setLikedUser(res.data);
+
+          const fetchData = async () => {
+            try {
+              const results = await Promise.all(
+                res.data.map(async (user) => {
+                  const res = await axiosPublic.get(`/user/${user}`);
+                  return res.data;
+                })
+              );
+              setLikedUserData(results);
+            } catch (error) {
+              console.error("Error fetching user data:", error);
+            }
+          };
+
+          fetchData();
         } catch (error) {
           console.error("Error fetching liked users:", error);
         }
@@ -26,23 +40,7 @@ const LikedProfile = () => {
 
       fetchLikedUser();
     }
-
-    const fetchData = async () => {
-      try {
-        const results = await Promise.all(
-          likedUser.map(async (user) => {
-            const res = await axiosPublic.get(`/user/${user}`);
-            return res.data;
-          })
-        );
-        setLikedUserData(results);
-      } catch (error) {
-        console.error("Error fetching user data:", error);
-      }
-    };
-
-    fetchData();
-  }, [likedUser, axiosPublic, user]);
+  }, [axiosPublic, user]);
 
   return (
     <div className="sr-content pt--30 mt--80">
@@ -54,9 +52,9 @@ const LikedProfile = () => {
               <div className="row">
                 <div className="col-lg-12">
                   <div className="section-title text-center">
-                    <span className="subtitle">
+                    {/* <span className="subtitle">
                       Visit portfolio and keep your feedback
-                    </span>
+                    </span> */}
                     <h2 className="title"> Liked Profile</h2>
                   </div>
                 </div>
@@ -72,7 +70,7 @@ const LikedProfile = () => {
                     <div className="text-right">
                       <a className="rn-btn btn-brd mr--30">
                         <span>
-                          {likedUser.length.toString().padStart(2, "0")}
+                          {likedUserData.length.toString().padStart(2, "0")}
                         </span>
                       </a>
                     </div>

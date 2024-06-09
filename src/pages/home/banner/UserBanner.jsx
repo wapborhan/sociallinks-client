@@ -1,3 +1,5 @@
+import Loading from "../../../components/Loading";
+
 const UserBanner = ({ signOutOnGithub, user }) => {
   return (
     <div className="container">
@@ -41,7 +43,14 @@ const UserBanner = ({ signOutOnGithub, user }) => {
         </div>
         <div className="col-lg-5 order-2">
           <div className="imagebanner">
-            <img src={user && user?.photoURL} alt={user && user?.displayName} />
+            {user ? (
+              <img
+                src={user && user?.photoURL}
+                alt={user && user?.displayName}
+              />
+            ) : (
+              <Loading />
+            )}
           </div>
           <div className="bg-color1"></div>
           <div className="bg-color2"></div>
