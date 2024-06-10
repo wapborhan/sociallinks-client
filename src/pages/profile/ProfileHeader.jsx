@@ -1,12 +1,5 @@
-import { useEffect, useState } from "react";
-import {
-  FaMapMarkerAlt,
-  FaHeart,
-  FaRegHeart,
-  FaEye,
-  // FaThumbsUp,
-} from "react-icons/fa";
-
+import { useEffect } from "react";
+import { FaMapMarkerAlt, FaHeart, FaRegHeart, FaEye } from "react-icons/fa";
 import { Link, NavLink, useParams } from "react-router-dom";
 import useGitProfileData from "../../hooks/useGitProfileData";
 import useSingleUser from "../../hooks/useSingleUser";
@@ -16,28 +9,25 @@ import toast from "react-hot-toast";
 
 const ProfileHeader = () => {
   const { usernames } = useParams();
-  // const [heart, setHeart] = useState(false);
-  const [likedUser, setLikeduser] = useState([]);
   const [gitProfileData] = useGitProfileData(usernames);
-  const [singleUser] = useSingleUser(usernames);
+  const [singleUser, refetch] = useSingleUser(usernames);
   const axiosPublic = useAxiosPublic();
   const { user } = useAuth();
 
   const toggleHeart = () => {
-    // setHeart(!heart);
     if (user) {
       axiosPublic
         .post(`/liked/${usernames}`, {
           liker: user?.reloadUserInfo?.screenName,
         })
         .then((response) => {
-          console.log(response);
+          refetch();
           if (response?.status === 200) {
             toast.success("Liked");
           }
         })
         .catch((error) => {
-          console.log(error);
+          refetch();
           if (error?.response?.status === 409) {
             toast.success("You already Liked.");
           }
@@ -55,19 +45,14 @@ const ProfileHeader = () => {
         } catch (error) {
           console.error("Error recording view:", error);
         }
-
-        const res = await axiosPublic.get(`/liked/${usernames}`);
-        setLikeduser(res.data);
       };
       recordView();
     }
-  }, [user, axiosPublic, usernames]);
+  }, [user, axiosPublic, usernames, refetch]);
 
-  const existingLiker = likedUser.find(
+  const existingLiker = singleUser?.profileLikes?.find(
     (liker) => liker === user?.reloadUserInfo?.screenName
   );
-
-  console.log(existingLiker);
 
   return (
     <>
@@ -137,16 +122,20 @@ const ProfileHeader = () => {
                       <span>
                         Likes: {user && singleUser?.profileLikes?.length}
                       </span>{" "}
-                      {!existingLiker ? (
+                      {user &&
+                      existingLiker !== user?.reloadUserInfo?.screenName ? (
                         <div
                           className="experience-footer  cursor-pointer"
                           onClick={toggleHeart}
                         >
-                          <FaRegHeart /> likes
+                          <FaRegHeart />
                         </div>
                       ) : (
-                        <div className="experience-footer">
-                          liked <FaHeart color="#f9004d" />
+                        <div
+                          className="experience-footer"
+                          title="Already Liked"
+                        >
+                          <FaHeart color="#f9004d" />
                         </div>
                       )}
                     </div>
