@@ -1,10 +1,11 @@
 import { Toaster } from "react-hot-toast";
 import LinkList from "./LinkList";
 import useMetaData from "../../hooks/useMetaData";
-import { useState } from "react";
+
 
 const Profile = () => {
   useMetaData("Profile");
+  
 
   return (
     <div className="sr-content pt--30">

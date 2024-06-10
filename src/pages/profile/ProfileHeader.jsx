@@ -4,7 +4,7 @@ import {
   FaHeart,
   FaRegHeart,
   FaEye,
-  FaThumbsUp,
+  // FaThumbsUp,
 } from "react-icons/fa";
 
 import { Link, NavLink, useParams } from "react-router-dom";
@@ -12,19 +12,37 @@ import useGitProfileData from "../../hooks/useGitProfileData";
 import useSingleUser from "../../hooks/useSingleUser";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import useAuth from "../../hooks/useAuth";
+import toast from "react-hot-toast";
 
 const ProfileHeader = () => {
   const { usernames } = useParams();
-  const [heart, setHeart] = useState(false);
+  // const [heart, setHeart] = useState(false);
+  const [likedUser, setLikeduser] = useState([]);
   const [gitProfileData] = useGitProfileData(usernames);
   const [singleUser] = useSingleUser(usernames);
   const axiosPublic = useAxiosPublic();
   const { user } = useAuth();
 
-  console.log(singleUser);
-
   const toggleHeart = () => {
-    setHeart(!heart);
+    // setHeart(!heart);
+    if (user) {
+      axiosPublic
+        .post(`/liked/${usernames}`, {
+          liker: user?.reloadUserInfo?.screenName,
+        })
+        .then((response) => {
+          console.log(response);
+          if (response?.status === 200) {
+            toast.success("Liked");
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          if (error?.response?.status === 409) {
+            toast.success("You already Liked.");
+          }
+        });
+    }
   };
 
   useEffect(() => {
@@ -37,10 +55,19 @@ const ProfileHeader = () => {
         } catch (error) {
           console.error("Error recording view:", error);
         }
+
+        const res = await axiosPublic.get(`/liked/${usernames}`);
+        setLikeduser(res.data);
       };
       recordView();
     }
   }, [user, axiosPublic, usernames]);
+
+  const existingLiker = likedUser.find(
+    (liker) => liker === user?.reloadUserInfo?.screenName
+  );
+
+  console.log(existingLiker);
 
   return (
     <>
@@ -110,12 +137,18 @@ const ProfileHeader = () => {
                       <span>
                         Likes: {user && singleUser?.profileLikes?.length}
                       </span>{" "}
-                      <div
-                        className="experience-footer  cursor-pointer"
-                        onClick={toggleHeart}
-                      >
-                        {heart ? <FaRegHeart /> : <FaHeart color="#f9004d" />}
-                      </div>
+                      {!existingLiker ? (
+                        <div
+                          className="experience-footer  cursor-pointer"
+                          onClick={toggleHeart}
+                        >
+                          <FaRegHeart /> likes
+                        </div>
+                      ) : (
+                        <div className="experience-footer">
+                          liked <FaHeart color="#f9004d" />
+                        </div>
+                      )}
                     </div>
                     {/* <!-- end --> */}
                   </div>
