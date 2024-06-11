@@ -11,8 +11,6 @@ const Ranks = () => {
   const axiosPublic = useAxiosPublic();
   const [rankUsers, setRankUser] = useState();
 
-  console.log(rankUsers);
-
   useEffect(() => {
     const fetchRanker = async () => {
       try {

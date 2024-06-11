@@ -37,43 +37,58 @@ const PopupMenu = ({ menu, toggleMenu }) => {
         </div>
         <div className="content">
           <ul className="primary-menu nav nav-pills onepagenav">
-            <li className="nav-item current" onClick={toggleMenu}>
-              <Link className="nav-link smoth-animation" to="/">
+            <li className="nav-item current">
+              <Link
+                className="nav-link smoth-animation"
+                to="/"
+                onClick={toggleMenu}
+              >
                 Home
               </Link>
             </li>
-            <li className="nav-item" onClick={toggleMenu}>
-              <Link className="nav-link smoth-animation" to="/about">
+            <li className="nav-item">
+              <Link
+                className="nav-link smoth-animation"
+                to="/about"
+                onClick={toggleMenu}
+              >
                 About
               </Link>
             </li>
-            <li className="nav-item" onClick={toggleMenu}>
-              <Link className="nav-link smoth-animation" to="/ranks">
+            <li className="nav-item">
+              <Link
+                className="nav-link smoth-animation"
+                to="/ranks"
+                onClick={toggleMenu}
+              >
                 Rank
               </Link>
             </li>
             {user && (
               <>
-                <li className="nav-item" onClick={toggleMenu}>
+                <li className="nav-item">
                   <Link
                     className="nav-link smoth-animation"
                     to="/profile/liked"
+                    onClick={toggleMenu}
                   >
                     Liked Profiles
                   </Link>
                 </li>
-                <li className="nav-item" onClick={toggleMenu}>
+                <li className="nav-item">
                   <Link
                     className="nav-link smoth-animation"
                     to={`/profile/update/${user?.reloadUserInfo?.screenName}`}
+                    onClick={toggleMenu}
                   >
                     Update Profiles
                   </Link>
                 </li>
-                <li className="nav-item" onClick={toggleMenu}>
+                <li className="nav-item">
                   <Link
                     className="nav-link smoth-animation"
                     to={`/profile/${user?.reloadUserInfo?.screenName}`}
+                    onClick={toggleMenu}
                   >
                     My Profile
                   </Link>
