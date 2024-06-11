@@ -1,13 +1,21 @@
 import { Link } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
+import MobileMenu from "./MobileMenu";
+import PopupMenu from "./PopupMenu";
+import { useState } from "react";
 
 const Header = () => {
   const { user } = useAuth();
+  const [menu, setMenu] = useState(false);
+
+  const toggleMenu = () => {
+    setMenu(!menu);
+  };
 
   return (
     <>
       <header className="rn-header haeder-default black-logo-version header--fixed header--sticky">
-        <div className="header-wrapper m--0 pl--105 pr--105 rn-popup-mobile-menu row align-items-center">
+        <div className="header-wrapper m--0 rn-popup-mobile-menu row align-items-center d-none d-xl-flex d-lg-flex header-style-2 header-padding">
           <div className="col-lg-2 col-6">
             <div className="header-left">
               <div className="logo">
@@ -72,6 +80,8 @@ const Header = () => {
             </div>
           </div>
         </div>
+        <MobileMenu toggleMenu={toggleMenu} />
+        <PopupMenu toggleMenu={toggleMenu} menu={menu} />
       </header>
     </>
   );

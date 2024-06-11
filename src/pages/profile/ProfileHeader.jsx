@@ -118,7 +118,6 @@ const ProfileHeader = () => {
                         Profile views:{" "}
                         {user && singleUser?.profileViews?.length}
                       </span>{" "}
-                      |{" "}
                       <span>
                         Likes: {user && singleUser?.profileLikes?.length}
                       </span>{" "}
@@ -194,10 +193,13 @@ const ProfileHeader = () => {
                         )}
                       </div>
                       <div className="skill-share-inner ">
-                        <div className="status-info mb-3 px-5 mt-5">
-                          {singleUser?.bio}
-                        </div>
-                        {/* <ul className="text-left content mt-4 mb-2 p-0 placeholder-glow w-100">
+                        <div className="status-info mb-3 px-5 mt-5"></div>
+                        <ul className="text-left content mt-4 mb-2 p-0 placeholder-glow w-100">
+                          <li>
+                            <span style={{ color: "#f9004d" }}>
+                              {singleUser?.bio}
+                            </span>
+                          </li>
                           {gitProfileData ? (
                             <li>Company: {gitProfileData?.company}</li>
                           ) : (
@@ -208,45 +210,7 @@ const ProfileHeader = () => {
                               </span>
                             </li>
                           )}
-
-                          {gitProfileData ? (
-                            <li>
-                              Twitter:
-                              <a
-                                className="text-decoration-none color-dark "
-                                href={`http://www.twitter.com/${gitProfileData?.twitter_username}`}
-                              >
-                                {gitProfileData?.twitter_username}
-                              </a>
-                            </li>
-                          ) : (
-                            <li>
-                              Twitter:
-                              <span className="placeholder w-50 ms-3 rounded">
-                                {" "}
-                              </span>
-                            </li>
-                          )}
-
-                          {gitProfileData ? (
-                            <li>
-                              Website:
-                              <a
-                                className="text-decoration-none color-dark"
-                                href={`http://${gitProfileData?.blog}`}
-                              >
-                                {gitProfileData?.blog}
-                              </a>
-                            </li>
-                          ) : (
-                            <li>
-                              Website:
-                              <span className="placeholder w-50 ms-3 rounded">
-                                {" "}
-                              </span>
-                            </li>
-                          )}
-                        </ul> */}
+                        </ul>
                       </div>
                     </div>
                   </div>

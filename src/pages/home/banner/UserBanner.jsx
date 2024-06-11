@@ -4,7 +4,7 @@ const UserBanner = ({ signOutOnGithub, user }) => {
   return (
     <div className="container">
       <div className="row">
-        <div className="order-1 order-lg-2 col-lg-9 col-xl-7 mt--35">
+        <div className="order-1 order-lg-2 order-md-1 col-lg-7 col-xl-7 mt--35">
           <div className="content">
             <div className="inner mb_sm--80">
               <h1 className="title">
@@ -41,7 +41,7 @@ const UserBanner = ({ signOutOnGithub, user }) => {
             </div>
           </div>
         </div>
-        <div className="col-lg-5 order-2">
+        <div className="col-lg-5 order-2 order-md-2 d-xl-block  d-lg-block d-md-none d-none">
           <div className="imagebanner">
             {user ? (
               <img

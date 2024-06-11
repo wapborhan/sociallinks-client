@@ -16,7 +16,7 @@ const Banner = () => {
 
   return (
     <>
-      <div className="banner vw-100 vh-100 d-flex justify-content-center align-items-center">
+      <div className="banner vw-100 md-h-100 xl-vh-100 d-flex justify-content-center align-items-center">
         <div id="home" className="rn-slider-area">
           <div className="slide slider-style-4 bg_image bg_image--1 ">
             {loading ? (

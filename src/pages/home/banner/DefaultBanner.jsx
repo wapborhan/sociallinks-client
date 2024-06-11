@@ -63,7 +63,7 @@ const DefaultBanner = () => {
   return (
     <div className="container">
       <div className="row">
-        <div className="order-1 order-lg-2 col-lg-9 col-xl-7 mt--35">
+        <div className="order-1 order-lg-2 col-lg-7 col-xl-7 mt--35">
           <div className="content">
             <div className="inner mb_sm--80">
               <h1 className="title">Hi, Developer </h1>

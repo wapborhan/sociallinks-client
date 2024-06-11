@@ -7,7 +7,7 @@ const LikedList = ({ user }) => {
       className="col-lg-6 col-xl-4 col-md-6 col-12 mt--50 mt_md--30 mt_sm--30 mb-3"
     >
       <div className="experience-style-two aos-init aos-animate liked-profile">
-        <div className="experience-left">
+        <div className="experience-lefts">
           <div className="experience-image">
             <img
               loading="lazy"
@@ -19,11 +19,11 @@ const LikedList = ({ user }) => {
               alt={name}
             />
           </div>
-          <div className="experience-center">
-            <h4 className="experience-title">{name}</h4>
-          </div>
         </div>
-        <div className="experience-right"></div>
+        <div className="experience-center">
+          <h4 className="experience-title">{name}</h4>
+        </div>
+        {/* <div className="experience-right">s</div> */}
       </div>
     </div>
   );
