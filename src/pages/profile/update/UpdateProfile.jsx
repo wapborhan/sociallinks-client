@@ -95,11 +95,16 @@ const UpdateProfile = () => {
                   <div className="contact-form-wrappers">
                     <div className="introduce">
                       <form
-                        className="rnt-contact-form rwt-dynamic-form row"
+                        className="rnt-contact-form rwt-dynamic-form row mt--75"
                         id="contact-form"
                         onSubmit={handleSubmit(onSubmit)}
                       >
                         {/* input form */}
+                        <OthersForm
+                          register={register}
+                          errors={errors}
+                          singleUser={singleUser}
+                        />
                         <CodingForm
                           register={register}
                           errors={errors}
@@ -120,16 +125,12 @@ const UpdateProfile = () => {
                           errors={errors}
                           singleUser={singleUser}
                         />
-                        <PersonalForm
+                        {/* <PersonalForm
                           register={register}
                           errors={errors}
                           singleUser={singleUser}
-                        />
-                        <OthersForm
-                          register={register}
-                          errors={errors}
-                          singleUser={singleUser}
-                        />
+                        /> */}
+
                         {/* input form */}
                         <div className="col-lg-12">
                           <button

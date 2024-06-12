@@ -18,7 +18,7 @@ const Linkcard = ({ linkCard, link }) => {
       case "facebook":
         return `https://facebook.com/${linkValue}`;
       case "hackerRank":
-        return `https://www.hackerrank.com/${linkValue}`;
+        return `https://www.hackerrank.com/profile/${linkValue}`;
       case "codeForces":
         return `https://codeforces.com/profile/${linkValue}`;
       case "linkedin":
@@ -33,6 +33,8 @@ const Linkcard = ({ linkCard, link }) => {
         return `https://discord.com/users/${linkValue}`;
       case "whatsapp":
         return `https://wa.me/${linkValue}`;
+      case "blog":
+        return `https://${linkValue}`;
       default:
         return linkValue;
     }
@@ -66,7 +68,7 @@ const Linkcard = ({ linkCard, link }) => {
                 <div>
                   <h5 className="text-dark m-0">{title}</h5>
                   <p
-                    className="m-0"
+                    className="m-0 d-md-block  d-none"
                     style={{
                       color: "#888",
                     }}
