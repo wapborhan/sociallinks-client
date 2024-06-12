@@ -67,7 +67,7 @@ const UpdateProfile = () => {
           toast.success("Successfully Updated Links!");
           navigate(`/profile/${user?.reloadUserInfo?.screenName}`);
         }
-        console.log(response);
+        // console.log(response);
       })
       .catch((error) => console.log(error));
   };

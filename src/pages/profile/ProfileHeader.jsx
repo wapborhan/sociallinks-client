@@ -112,11 +112,10 @@ const ProfileHeader = () => {
                         <span className="placeholder rounded col-12 w-100"></span>
                       </div>
                     )}
-                    <div className="col-md-12 text-center d-flex gap-3 justify-content-start align-items-center">
+                    <div className="col-md-12 text-center d-flex gap-3 lg:justify-content-start justify-content-center align-items-center">
                       <FaEye />{" "}
                       <span>
-                        Profile views:{" "}
-                        {user && singleUser?.profileViews?.length}
+                        Views: {user && singleUser?.profileViews?.length}
                       </span>{" "}
                       <span>
                         Likes: {user && singleUser?.profileLikes?.length}

@@ -500,3 +500,16 @@ a {
     padding-top: 0px;
   }
 }
+
+@media only screen and (max-width: 767px) {
+  p.descriptions {
+    font-size: 18px;
+  }
+}
+
+@media only screen and (max-width: 479px) {
+  .slide .content .inner .title {
+    font-size: 22px;
+    line-height: 40px;
+  }
+}

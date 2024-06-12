@@ -9,7 +9,6 @@ const Repositories = () => {
   const { usernames } = useParams();
   const [gitRepoData, error, isError] = useGitRepoData(usernames);
   useMetaData("Repositories");
-  console.log(error, isError);
 
   return (
     <div className="sr-content pt--30">

@@ -37,13 +37,13 @@ const DefaultBanner = () => {
           )
           .then((response) => {
             const result = response.data;
-            console.log(response);
+            // console.log(response);
 
             if (response.data) {
               toast.success("Successfully Signin!");
               navigate(`/profile/${data?.screenName}`);
             }
-            console.log(result);
+            // console.log(result);
           })
           .catch((error) => {
             console.error("Something went wrong!", error);
@@ -56,7 +56,7 @@ const DefaultBanner = () => {
       })
       .catch((error) => {
         // Handle Errors here.
-        console.log(error);
+        // console.log(error);
       });
   };
 
@@ -94,8 +94,12 @@ const DefaultBanner = () => {
           </div>
         </div>
         <div className="col-lg-5 order-2">
-          <div className="imagebanner">
-            {/* <img src={user && user?.photoURL} alt="" /> */}
+          <div className="imagebanners ">
+            <img
+              src="/assets/images/social.png"
+              alt=""
+              style={{ zIndex: "99", position: "absolute" }}
+            />
           </div>
           <div className="bg-color1"></div>
           <div className="bg-color2"></div>
